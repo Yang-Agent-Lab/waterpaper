@@ -1,0 +1,5 @@
+# Official compatible stable versions. MIT licenses, verified 2026-10-19.
+# Reuse existing torch2.7.1/numpy/pandas/matplotlib/cloudpickle read-only.
+stable-baselines3==2.7.1
+gymnasium==1.2.3
+farama-notifications==0.0.4

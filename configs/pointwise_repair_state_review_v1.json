@@ -1,0 +1,111 @@
+{
+  "baseline": "aligned_pq",
+  "variants": [
+    "state_q",
+    "state_pq",
+    "extreme_resampling"
+  ],
+  "entries": [
+    {
+      "id": "aligned_pq",
+      "label": "DiffPTS aligned",
+      "route": "pq",
+      "path": "./results/experiments/stage1_formal_e2c4098/artifacts/diffpts_pq"
+    },
+    {
+      "id": "aligned_q_only",
+      "label": "DiffPTS aligned Q-only",
+      "route": "q_only",
+      "path": "./results/experiments/stage1_formal_e2c4098/artifacts/diffpts_q_only"
+    },
+    {
+      "id": "nbeatsx_pq",
+      "label": "nbeatsx P+Q",
+      "route": "pq",
+      "path": "./results/experiments/pointwise_full_benchmark_v1_seed2/artifacts/nbeatsx_pq"
+    },
+    {
+      "id": "lstm_pq",
+      "label": "lstm P+Q",
+      "route": "pq",
+      "path": "./results/experiments/pointwise_full_benchmark_v1_seed2/artifacts/lstm_pq"
+    },
+    {
+      "id": "tcn_pq",
+      "label": "tcn P+Q",
+      "route": "pq",
+      "path": "./results/experiments/pointwise_full_benchmark_v1_seed2/artifacts/tcn_pq"
+    },
+    {
+      "id": "tft_pq",
+      "label": "tft P+Q",
+      "route": "pq",
+      "path": "./results/experiments/pointwise_full_benchmark_v1_seed2/artifacts/tft_pq"
+    },
+    {
+      "id": "persistence_pq",
+      "label": "persistence P+Q",
+      "route": "pq",
+      "path": "./results/experiments/pointwise_full_benchmark_v1_seed2/artifacts/persistence_pq"
+    },
+    {
+      "id": "nbeatsx_q_only",
+      "label": "nbeatsx Q-only",
+      "route": "q_only",
+      "path": "./results/experiments/stage1_formal_e2c4098/artifacts/nbeatsx_q_only"
+    },
+    {
+      "id": "lstm_q_only",
+      "label": "lstm Q-only",
+      "route": "q_only",
+      "path": "./results/experiments/stage1_formal_e2c4098/artifacts/lstm_q_only"
+    },
+    {
+      "id": "tcn_q_only",
+      "label": "tcn Q-only",
+      "route": "q_only",
+      "path": "./results/experiments/stage1_formal_e2c4098/artifacts/tcn_q_only"
+    },
+    {
+      "id": "tft_q_only",
+      "label": "tft Q-only",
+      "route": "q_only",
+      "path": "./results/experiments/stage1_formal_e2c4098/artifacts/tft_q_only"
+    },
+    {
+      "id": "ppm_q_only",
+      "label": "ppm Q-only",
+      "route": "q_only",
+      "path": "./results/experiments/stage1_formal_e2c4098/artifacts/ppm_q_only"
+    },
+    {
+      "id": "persistence_q_only",
+      "label": "persistence Q-only",
+      "route": "q_only",
+      "path": "./results/experiments/stage1_formal_e2c4098/artifacts/persistence_q_only"
+    },
+    {
+      "id": "state_q",
+      "label": "State (Q features)",
+      "route": "pq",
+      "path": "./results/experiments/state_formal_150f537/artifacts/state_q_pq"
+    },
+    {
+      "id": "state_pq",
+      "label": "State (P+Q features)",
+      "route": "pq",
+      "path": "./results/experiments/state_formal_150f537/artifacts/state_pq_pq"
+    },
+    {
+      "id": "extreme_resampling",
+      "label": "Extreme resampling",
+      "route": "pq",
+      "path": "./results/experiments/state_formal_150f537/artifacts/extreme_resampling_pq"
+    }
+  ],
+  "case_ids": [
+    "40b87956858b6939584c4742b552fc801f3d6db5829124a3e4afb3b3f956128f",
+    "03775f54c578324cd679632e06629242291e0e0a205a71b1077e0ede2e95282b"
+  ],
+  "scientific_scope": "existing fit/select development, seed2, no new training; Q-only and pq data pools differ"
+}

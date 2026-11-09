@@ -1,0 +1,21 @@
+{
+  "state": "PREPARATION_ONLY_NOT_FORMAL_TRAINING",
+  "condition_id": "WP-20261015-POINTWISE-FULL-BENCHMARK-V1",
+  "history_hours": 24,
+  "forecast_hours": 24,
+  "seed": 2,
+  "training_countries": ["CN", "DE", "IS", "US", "JP"],
+  "country_weights": {"CN": 0.5, "DE": 0.2, "IS": 0.1, "US": 0.15, "JP": 0.05},
+  "epochs": 50,
+  "updates_per_epoch": 200,
+  "batch_size": 64,
+  "foreign_select_origins_per_station": 2,
+  "china_select": "all_1706_qualified_origins",
+  "permission_sha256": "bd0074a0e9ddf6df9a9dc077e835330e7741f29ffa7f87d57edee3bd1bca2e53",
+  "fit_scales": "inherited_only_no_refit",
+  "data_version_change": "restore complete already allocated DE/IS original blocks omitted from quota window export",
+  "budget_status": "draft_640k_exposures_per_route; finalize after real smoke throughput",
+  "sampling_scope": "DE/IS selected old blocks; US/JP allocated continuous source clocks; not natural annual China/foreign flood prevalence",
+  "physical_projection": "preserve raw model output; uniformly clip negative Q only before scoring",
+  "models": {"pq": ["diffpts", "nbeatsx", "lstm", "tcn", "tft"], "q_only": ["diffpts", "nbeatsx", "lstm", "tcn", "tft", "ppm"]}
+}

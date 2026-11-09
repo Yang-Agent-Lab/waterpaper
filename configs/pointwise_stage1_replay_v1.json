@@ -1,0 +1,10 @@
+{
+  "condition_id": "WP-20261016-POINTWISE-NUMERIC-ALIGN-V1",
+  "checkpoint": "./results/experiments/pointwise_full_benchmark_v1_seed2/artifacts/diffpts_q_only/last.pt",
+  "original_condition": "./results/experiments/pointwise_full_benchmark_v1_seed2/artifacts/condition.json",
+  "expected_bank_sha256": "3586f291e9b344fd96b96e9110204bad7cb9d9d40c4286dbc441680b1231269d",
+  "max_updates": 200,
+  "variance_floor": 0,
+  "device": "cuda:0",
+  "formal_weights_saved": false
+}

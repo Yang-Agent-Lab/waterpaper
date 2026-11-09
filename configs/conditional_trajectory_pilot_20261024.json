@@ -1,0 +1,118 @@
+{
+  "experiment_id": "WP-20261024-CONDITIONAL-TRAJECTORY-PILOT-V1",
+  "execution_spec": "configs/conditional_trajectory_pilot_20261024.md",
+  "execution_spec_revision": "1.1",
+  "approved_spec_sha256": "02d960a0cc8ccda1010e50062cb4873da82f69bb962167f0d66d8174001e0e52",
+  "execution_server": "teacherbox",
+  "project_root": ".",
+  "worktree_root": ".",
+  "environment_python": "./environments/pointwise_benchmark_v1/bin/python",
+  "device": "cuda:0",
+  "cuda_visible_devices": "0",
+  "cpu_threads": 4,
+  "gpu_lock": "./artifacts/pointwise_gpu0.lock",
+  "source_moe_config": {
+    "path": "configs/moe_lead_routing_pilot_20261023.json",
+    "sha256": "9b54e53644e1d2d9f29bd49b10fac4224cd13018d785b28fb2ec3261a1ccb652"
+  },
+  "producer": {
+    "commit": "2ca8594485f9c3a57768dec8059491c68c44489f",
+    "queue_manifest": "./results/experiments/moe_lead_routing_pilot_20261024_formal_2ca8594/queue_manifest.json",
+    "queue_manifest_sha256": "f9aed66d7b98505fcc3b79be4ceda3bb532c435888f0b2c681ed71aac62c6aab",
+    "m0_manifest": "./results/experiments/moe_lead_routing_pilot_20261024_formal_2ca8594/binding/M0_REBUILT_manifest.json",
+    "m0_manifest_sha256": "4bf3e47a2a62df588bd1cb883dbed12a536ab272e68d3d9e03c0882bde119a25",
+    "m0_checkpoint_sha256": "3fb459672412f51b1c1a98583055d930aca6844807aceda51ecc7e7498bfa68d",
+    "m0_completed_updates": 5000
+  },
+  "reference_source": {
+    "commit": "83c2accd6019e2c85fe102b117ba0f1a30499cd4",
+    "root": "./results/experiments/moe_lead_routing_pilot_20261024_continue_83c2acc_formal/runs/references/artifacts",
+    "bundle_sha256": "5f78e71bcb44c04eb1b00bac33a24937df223ff4c948688e838999cdb81309d8",
+    "rows_sha256": "9748ddf0400830adf5cbe600d5a422e043ac74a444f4f3edc91afcd3678f40af",
+    "references": {
+      "M0_REBUILT_K32": {
+        "prediction_sha256": "dc2a799ff5afb025d4a475de4a594e87828ca3682bb97e0bd5fce7aba6560538",
+        "noiseplan_sha256": "295bf8abc59a19255d8b3f1589f3295f46b373dbf48833db225efbc83df01863",
+        "checkpoint_sha256": "3fb459672412f51b1c1a98583055d930aca6844807aceda51ecc7e7498bfa68d",
+        "scenarios": 32,
+        "seed": 600002
+      },
+      "M0_REBUILT_K64": {
+        "prediction_sha256": "03c4fdeee49753f88b3cf4155aedbad3f59f064952d1b0383c1a83af4dbbf057",
+        "noiseplan_sha256": "ec446eb5458147b4ec44d684956f2b84bce67206a267b519df1c3b3bc0c5f1bd",
+        "checkpoint_sha256": "3fb459672412f51b1c1a98583055d930aca6844807aceda51ecc7e7498bfa68d",
+        "scenarios": 64,
+        "seed": 900002
+      },
+      "D500_K32": {
+        "prediction_sha256": "ccf02e152a697453767db42b2df3bacffe16902aa846c0df6316db46177bce12",
+        "noiseplan_sha256": "295bf8abc59a19255d8b3f1589f3295f46b373dbf48833db225efbc83df01863",
+        "checkpoint_sha256": "bbd6f87e0ad452873f1d4b357a67cf2fbd823bb2dd3bdc36e56ab7b2d06c4a3a",
+        "scenarios": 32,
+        "seed": 600002
+      },
+      "D500_K64": {
+        "prediction_sha256": "b8af5babffd001886b8cf1267e15a934ca3c4a76007ed5abd302572842f5bd2f",
+        "noiseplan_sha256": "ec446eb5458147b4ec44d684956f2b84bce67206a267b519df1c3b3bc0c5f1bd",
+        "checkpoint_sha256": "bbd6f87e0ad452873f1d4b357a67cf2fbd823bb2dd3bdc36e56ab7b2d06c4a3a",
+        "scenarios": 64,
+        "seed": 900002
+      }
+    }
+  },
+  "data": {
+    "fit_origins": 3388,
+    "fit_stations": 8,
+    "fit_source_units": 44,
+    "select_origins": 262,
+    "select_stations": 9,
+    "select_source_units": 17,
+    "horizon": 24,
+    "input_group": "pq"
+  },
+  "training": {
+    "seed": 2,
+    "updates": 300,
+    "batch": 8,
+    "draws": 8,
+    "reverse_steps": 20,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "optimizer": "AdamW",
+    "validation_updates": [100, 200, 300],
+    "validation_draws": 32,
+    "validation_seed": 600002,
+    "final_draws": 64,
+    "final_seed": 900002,
+    "evaluation_batch": 32,
+    "training_noise_seed_offset": 10000000,
+    "per_group_engineering_smoke_steps": 4,
+    "same_s3_replay_update": 4,
+    "loss_definition": "CRPS_U + 0.1*ES_U + 0.5*twCRPS_U(max(z-1,0)); Q95-normalized scenarios after nonnegative projection, U-statistics across all draws/leads/origins",
+    "twcrps_threshold_q95_units": 1.0,
+    "formal_total_updates": 900,
+    "formal_release_required": true,
+    "early_stopping": false
+  },
+  "groups": ["L", "C", "E"],
+  "trajectory": {
+    "context_width": 96,
+    "encoder_width": 64,
+    "readout_width": 32,
+    "rqs_layers": 2,
+    "rqs_bins": 8,
+    "rqs_bound": 8.0,
+    "min_bin_width": 0.001,
+    "min_bin_height": 0.001,
+    "min_derivative": 0.001,
+    "identity_atol": 1e-6,
+    "identity_rtol": 1e-6,
+    "resume_atol": 1e-7,
+    "resume_rtol": 1e-5,
+    "context_std_zero_policy": "use_scale_1_for_exactly_zero_fit_std",
+    "tail_type": "learned_positive_linear_tails_C1_at_pm8",
+    "history_feature_transform": "unchanged original q_scale fit transform for P and Q",
+    "mu_variance_transform": "r=q_scale/Q95; mu95=mu*r; g95=g*r^2; log_variance=log(g95)"
+  }
+}

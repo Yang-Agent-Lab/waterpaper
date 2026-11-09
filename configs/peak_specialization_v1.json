@@ -1,0 +1,88 @@
+{
+  "status": "APPROVED_USER_TWO_EXPERIMENTS_20261006",
+  "baseline_commit": "bc9464995ac3fa3806f6e03004304c0d12f87ec9",
+  "data_commit": "e50e3cfb1413338f876ba3475771a2116c25fe83",
+  "model_manifest": "./external-home/pooled_esdf_d781a3f_v2/results/experiments/esdf_projection_full_d781a3f_20261005/artifacts/model_manifest.json",
+  "local_attribute_receipt": "./results/experiments/basin_attribute_inputs_receipt_20261006",
+  "arms": [
+    "W",
+    "E"
+  ],
+  "seeds": [
+    2,
+    17,
+    42
+  ],
+  "history_hours": 12,
+  "fast_hours": 6,
+  "background_block_hours": 3,
+  "horizon_hours": 12,
+  "single_hidden": 64,
+  "fast_hidden": 32,
+  "slow_hidden": 32,
+  "basin_hidden": 16,
+  "head_hidden": 64,
+  "modulator_hidden": 32,
+  "lstm_layers": 1,
+  "head_dropout": 0.1,
+  "optimizer": "Adam",
+  "learning_rate": 0.001,
+  "batch_size": 64,
+  "evaluation_batch_size": 2048,
+  "max_epochs": 100,
+  "early_stopping_patience_evaluations": 15,
+  "validation_every_epochs": 1,
+  "epoch_validation_scope": "China all legal saved origins, no peak-only selection",
+  "final_validation_scope": "all saved validation origins, regular and oracle peak diagnostics separately tagged",
+  "gradient_norm_clip": 1.0,
+  "epoch_base_draws": "exactly N_train saved windows with replacement using existing country/station weights",
+  "loss": "mean absolute normalized future-Q error over batch and all12leads",
+  "selection": [
+    "China event-then-station-equal normalized window-maximum absolute error",
+    "China event-then-station-equal normalized sequence MAE",
+    "earlier epoch"
+  ],
+  "patience_reset_rule": "strict primary metric improvement only, min_delta=0",
+  "device": "one available teacherbox CUDA device; never stop another job",
+  "cpu_threads": 1,
+  "walltime_cap": null,
+  "test_access": false,
+  "future_measured_precipitation_input": false,
+  "prediction_clipping": false,
+  "smoke": {
+    "seeds": [
+      2
+    ],
+    "epochs": 3,
+    "max_train_windows_per_station": 128,
+    "max_regular_validation_windows_per_station": 128,
+    "retain_all_selected_station_peak_origins": true,
+    "stations": [
+      "da_tl_cn:Jinping",
+      "da_tl_cn:Liqingdian",
+      "camels_de_1h:DE110000",
+      "lamah_ice:14"
+    ]
+  },
+  "formal_training_authority": "User asked to execute the two experiments discussed in ChatGPT 6ac4f4cf-e110-83ee-8c45-c387f5b06aa9. One W/E x 2/17/42 run after focused smoke and independent acceptance; no new D run, grids or test. Numerical starts fixed by coordinator under standing authority, not copied from papers.",
+  "baseline_run": "./external-home/three_branch_bc94649/results/experiments/three_branch_formal_bc94649_20261006",
+  "baseline_arms": [
+    "D"
+  ],
+  "threshold": "saved station training q95; use authoritative saved high95_hours labels",
+  "high_point_weight": 5.0,
+  "gate_label": "any authoritative future high95_hours in the 12h target",
+  "gate_hidden": 32,
+  "gate_initial_probability": 0.5,
+  "mixture_loss_coefficient": 0.5,
+  "assigned_expert_loss_coefficient": 0.5,
+  "gate_bce_coefficient": 0.1,
+  "gate_bce_positive_weight": 1.0,
+  "loss_W": "sum((1+4*high95_hours)*abs(pred-y))/sum(1+4*high95_hours)",
+  "loss_E": "0.5*weighted_mixture_MAE+0.5*weighted_assigned_expert_MAE+0.1*unweighted_gate_BCE",
+  "state_classes": [
+    "non_high_future_window",
+    "high_future_window"
+  ],
+  "new_formal_models": 6
+}

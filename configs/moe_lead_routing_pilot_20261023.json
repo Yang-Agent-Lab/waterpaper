@@ -1,0 +1,160 @@
+{
+  "experiment_id": "WP-20261023-MOE-LEAD-ROUTING-PILOT-V1",
+  "execution_spec": "configs/moe_lead_routing_pilot_20261023.md",
+  "execution_spec_revision": "1.4",
+  "approved_spec_sha256": "e25c2f58ea61ec5f8026561562cf2bb42eaadc59e417bab73d4bbc8308908739",
+  "source_input_configs": {
+    "m_extreme": {
+      "path": "configs/m_extreme_augmentation_v1_20261023.json",
+      "sha256": "280a429e200d12e6859a307decde09a843a88b88d4d98a6c884780e661f04549"
+    },
+    "route_cache": {
+      "path": "configs/moe_route_cache_diagnosis_20261023.json",
+      "sha256": "ca33cb917a394f41603833f1f44534d9525c8235416a75261146c6d105cd005f"
+    }
+  },
+  "execution_server": "teacherbox",
+  "execution_environment_note": "Reuse the existing pointwise_benchmark_v1 environment: the root .venv lacks the required torch-timeseries 0.2.5; the chosen environment has it and matches Torch 2.7.1+cu118, NumPy 2.2.6 and SciPy 1.15.3.",
+  "project_root": ".",
+  "environment_python": "./environments/pointwise_benchmark_v1/bin/python",
+  "device": "cuda:0",
+  "cuda_visible_devices": "0",
+  "cpu_threads": 4,
+  "gpu_lock": "./artifacts/pointwise_gpu0.lock",
+  "seed": 2,
+  "groups": [
+    "R0",
+    "R1"
+  ],
+  "formal_updates": 1200,
+  "formal_batch": 32,
+  "validation_updates": [
+    400,
+    800,
+    1200
+  ],
+  "validation_draws": 32,
+  "final_draws": 64,
+  "selection_seed": 600002,
+  "final_seed": 900002,
+  "evaluation_chunk": 32,
+  "reverse_steps": 20,
+  "adapter_width": 64,
+  "adapter_blocks": 2,
+  "trainable_parameter_prefixes": {
+    "R0": [
+      "routes."
+    ],
+    "R1": [
+      "routes.",
+      "lead_routes."
+    ]
+  },
+  "learning_rate": 0.0003,
+  "weight_decay": 0.0001,
+  "gradient_clip": 1.0,
+  "lambda_crps_u": 0.1,
+  "lambda_es_u": 0.1,
+  "balance_weight": 0.01,
+  "distribution_update_every": 4,
+  "distribution_origins": 8,
+  "distribution_draws": 8,
+  "historical_m_checkpoint": "./results/experiments/d500_process_adapter_v1_20261022_G1/finalize/artifacts/M/best.pt",
+  "historical_m_checkpoint_sha256": "3cfdf9fe702db06b5cb6df4da51a805e324f6be2f3289508e3cc304bccfbc9ce",
+  "m0_input_mode": "M0_REBUILT_RUNTIME_MANIFEST_ONLY",
+  "m0_rebuild": {
+    "experiment_id": "WP-20261024-M0-REBUILD-V1",
+    "model_id": "M0_REBUILT",
+    "seed": 2,
+    "updates": 5000,
+    "exposure_rows_generated": 6000,
+    "batch": 32,
+    "preset": "p2",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "lambda_crps_u": 0.1,
+    "lambda_es_u": 0.1,
+    "balance_weight": 0.01,
+    "warmup_last_update": 200,
+    "full_distribution_update": 1000,
+    "distribution_update_every": 4,
+    "distribution_first_update": 204,
+    "distribution_origins": 8,
+    "distribution_draws": 8,
+    "validation_updates": [1000, 2000, 3000, 4000, 5000],
+    "validation_origins": 262,
+    "validation_draws": 32,
+    "validation_seed": 600002,
+    "checkpoint_interval": 100,
+    "fixed_terminal_only": true
+  },
+  "d500_checkpoint": "./results/experiments/b2_china_adapt_v1_20261018/formal_5722bfd_20261019/D_china_state/best.pt",
+  "d500_checkpoint_sha256": "bbd6f87e0ad452873f1d4b357a67cf2fbd823bb2dd3bdc36e56ab7b2d06c4a3a",
+  "author_source": "./reference/supporting/code/DiffPTS/e9a7d1d56bd40b4bcfced29b430f6c5be6f2a424",
+  "data_root": "./data/processed/eventflow_diffrl_v2_C_20261021",
+  "dependency_root": "./environments/pointwise_benchmark_v1/lib/python3.10/site-packages",
+  "training_recorder_source": "./runtime/sciencelab/src",
+  "selection_metadata_root": "./inputs/moe_lead_routing_pilot_recovery_20261023_7e02d9e/metadata/results/experiments/m_extreme_augmentation_v1_20261023/pilot_prepare_envfix/artifacts",
+  "selection_cache": "./inputs/moe_lead_routing_pilot_recovery_20261023_7e02d9e/metadata/results/experiments/m_extreme_augmentation_v1_20261023/pilot_prepare_envfix/artifacts/M0_K64",
+  "shared_exposure_source": "./results/experiments/m_extreme_augmentation_v1_20261023/pilot_prepare_envfix/artifacts/exposure.npz",
+  "historical_exposure_expected_sha256": "51a25d77f0d2fda9958c4110784275be9096c2a208557a2d9b40cd72c9b7c3d6",
+  "metadata_recovery": {
+    "archive_path": "./inputs/moe_lead_routing_pilot_recovery_20261023_7e02d9e/source/records_logs_metrics_7e02d9e_verified.tar.gz",
+    "archive_sha256": "d5ff44d1cf14e019d8786892fad2557a440b599ec56de4a343af9195d7368432",
+    "cross_server_identity_path": "./inputs/moe_lead_routing_pilot_recovery_20261023_7e02d9e/source/ORIGINAL_cross_server_CN_identity.json",
+    "cross_server_identity_sha256": "0b583937139f9fdfc0ad5609f0f6aa8186ab32f57bfc33721f122285146db633",
+    "manifest_path": "./inputs/moe_lead_routing_pilot_recovery_20261023_7e02d9e/recovery_manifest_v2.json",
+    "manifest_sha256": "7ed6176a045cba0d1c40a193a51c7206460c88ec482beee13130f634df38255f",
+    "portable_manifest_sha256": "df94d645afebd49017cea4437dfa9870b65c061a286c702a7d0a2143ffb9d14e"
+  },
+  "execution_path_mappings": {
+    "project_root": {"source": ".", "execution": "."},
+    "environment_python": {"source": "./.venv/bin/python", "execution": "./environments/pointwise_benchmark_v1/bin/python"},
+    "gpu_lock": {"source": "./artifacts/pointwise_gpu0.lock", "execution": "./artifacts/pointwise_gpu0.lock"},
+    "d500_checkpoint": {"source": "./inputs/d500_process_adapter_v1_20261022_verified/results/experiments/b2_china_adapt_v1_20261018/formal_5722bfd_20261019/D_china_state/best.pt", "execution": "./results/experiments/b2_china_adapt_v1_20261018/formal_5722bfd_20261019/D_china_state/best.pt"},
+    "data_root": {"source": "./data/processed/eventflow_diffrl_v2_C_20261021_gzip", "execution": "./data/processed/eventflow_diffrl_v2_C_20261021"},
+    "dependency_root": {"source": "./runtime/d500_process_adapter_v1_deps_20261022", "execution": "./environments/pointwise_benchmark_v1/lib/python3.10/site-packages"},
+    "training_recorder_source": {"source": "./runtime/sciencelab/src", "execution": "./runtime/sciencelab/src"},
+    "author_source": {"source": "./inputs/d500_process_adapter_v1_20261022_verified/reference/supporting/code/DiffPTS/e9a7d1d56bd40b4bcfced29b430f6c5be6f2a424", "execution": "./reference/supporting/code/DiffPTS/e9a7d1d56bd40b4bcfced29b430f6c5be6f2a424"},
+    "selection_cache": {"source": "./results/experiments/m_extreme_augmentation_v1_20261023/pilot_prepare_envfix/artifacts/M0_K64", "execution": "./inputs/moe_lead_routing_pilot_recovery_20261023_7e02d9e/metadata/results/experiments/m_extreme_augmentation_v1_20261023/pilot_prepare_envfix/artifacts/M0_K64"},
+    "shared_exposure_source": {"source": "./results/experiments/m_extreme_augmentation_v1_20261023/pilot_prepare_envfix/artifacts/exposure.npz", "execution": "./results/experiments/m_extreme_augmentation_v1_20261023/pilot_prepare_envfix/artifacts/exposure.npz"},
+    "selection_metadata_root": {"source": "./results/experiments/m_extreme_augmentation_v1_20261023/pilot_prepare_envfix/artifacts", "execution": "./inputs/moe_lead_routing_pilot_recovery_20261023_7e02d9e/metadata/results/experiments/m_extreme_augmentation_v1_20261023/pilot_prepare_envfix/artifacts"}
+  },
+  "reference_cache_paths": {
+    "M0_K32": "./inputs/moe_lead_routing_pilot_recovery_20261023_7e02d9e/metadata/results/experiments/m_extreme_augmentation_v1_20261023/pilot_prepare_envfix/artifacts/M0_K32",
+    "M0_K64": "./inputs/moe_lead_routing_pilot_recovery_20261023_7e02d9e/metadata/results/experiments/m_extreme_augmentation_v1_20261023/pilot_prepare_envfix/artifacts/M0_K64",
+    "D500_K32": "./inputs/moe_lead_routing_pilot_recovery_20261023_7e02d9e/metadata/results/experiments/m_extreme_augmentation_v1_20261023/pilot_prepare_envfix/artifacts/D500_K32",
+    "D500_K64": "./inputs/moe_lead_routing_pilot_recovery_20261023_7e02d9e/metadata/results/experiments/m_extreme_augmentation_v1_20261023/pilot_prepare_envfix/artifacts/D500_K64"
+  },
+  "reference_cache_status": {
+    "M0_K32": "verified_absent",
+    "M0_K64": "verified_absent",
+    "D500_K32": "verified_absent",
+    "D500_K64": "verified_absent"
+  },
+  "dataset": {
+    "fit_role": "fit",
+    "select_role": "select",
+    "fit_origins": 3388,
+    "stations": 8,
+    "source_units": 44,
+    "select_origins": 262,
+    "select_stations": 9,
+    "select_source_units": 17,
+    "horizon": 24,
+    "lead_hours": [
+      1,
+      3,
+      6,
+      12,
+      24
+    ]
+  },
+  "runtime_synchronization": "offline recorder only; no sender or intermediate cloud sync",
+  "formal_release_required": true,
+  "automatic_extra_seeds": false,
+  "early_stopping": false,
+  "formal_queue_workers": 1,
+  "test_opened": false
+}

@@ -1,0 +1,19 @@
+{
+  "change_id": "WP-20261013-LOCAL-RAIN-2X2-V1",
+  "spec_revision": "1.0",
+  "seed": 2,
+  "targets": ["da_tl_cn:Liqingdian", "da_tl_cn:Luanchuan"],
+  "source_manifest": "._multiwindow_97c3930/results/experiments/multiwindow_formal_97c3930_20261011/artifacts/source_manifest.json",
+  "checkpoint": "._multiwindow_97c3930/results/experiments/multiwindow_formal_97c3930_20261011/artifacts/seed_2/S2/best.pt",
+  "checkpoint_sha256": "b1061ac7fad0f9f5a54406974bfac7b395d2c0272f241419033d1eb0fe6bb79f",
+  "prepared_manifest_sha256": "e482500d17c6cd900b985c67ff3c6a274b43a892d5f779316032cdf3bfb0ecb6",
+  "eligibility": "._multiwindow_97c3930/results/experiments/multiwindow_formal_97c3930_20261011/artifacts/eligibility.json",
+  "final_eligibility": "._multiwindow_97c3930/results/experiments/multiwindow_formal_97c3930_20261011/artifacts/final_eligibility.json",
+  "common_updates": 1000, "branch_updates": 200,
+  "candidate_steps": [0, 50, 100, 150, 200],
+  "common_batch": 128, "branch_batch": 32,
+  "common_lr": 0.0003, "branch_lr": 0.0001,
+  "clip": 10, "train_scenarios": 16, "select_scenarios": 128, "final_scenarios": 512,
+  "information_status": "oracle_rain_diagnostic",
+  "mlflow_uri": "http://127.0.0.1:5510"
+}

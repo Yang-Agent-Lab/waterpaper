@@ -1,0 +1,6 @@
+-r requirements.txt
+# Optional readers/acquisition clients, only for the corresponding data source.
+openpyxl
+cdsapi
+eccodes
+ecmwf-opendata

@@ -1,0 +1,29 @@
+{
+  "change_id": "WP-20261101-EXTREME-PROCESS-TRANSFER-PILOT-V1",
+  "spec": "specs/extreme_process_transfer_pilot_20261101.md",
+  "spec_revision": "r1.4",
+  "seed": 2,
+  "batch_size": 64,
+  "history_hours": 24,
+  "forecast_hours": 24,
+  "train_groups": {
+    "M_N_E": 1200,
+    "M_X_E": 1200,
+    "M_N_ME": 1200,
+    "M_X_ME": 1200,
+    "H_X_MU_ONLY": 1200,
+    "NB_N": 3000,
+    "NB_X": 3000
+  },
+  "m_candidate_updates": [0, 400, 800, 1200],
+  "nb_candidate_updates": [0, 1000, 2000, 3000],
+  "validation_draws": 32,
+  "final_draws": 64,
+  "m_auxiliary_origins": 8,
+  "m_auxiliary_draws": 8,
+  "m_denoising_steps": 20,
+  "loss_coefficients": {"crps_u": 0.1, "energy_u": 0.1, "balance": 0.01, "ordinary_keep": 0.1},
+  "selection": "earliest minimum China station/event/origin weighted hourly Q95/Q99 Brier",
+  "teacher_run_root": "./results/experiments/extreme_process_transfer_pilot_20261101_v1",
+  "teacher_gpu": 0
+}

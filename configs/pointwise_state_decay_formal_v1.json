@@ -1,0 +1,46 @@
+{
+  "state": "APPROVED_FORMAL",
+  "change_id": "WP-20261016-POINTWISE-STATE-DECAY-V1",
+  "condition_id": "WP-20261016-POINTWISE-STATE-DECAY-CONDITION-V1",
+  "groups": ["state_decay_tau6", "state_constant_mean"],
+  "source_commits": {
+    "floor_baseline": "e2c409801e501a3c1df6743cf7fa7a5e02eaceca",
+    "state_pq": "150f5371fbed9bb9a7f17f2bfa93c6e16cdad159"
+  },
+  "run_root": ".",
+  "seed": 2,
+  "history_hours": 24,
+  "forecast_hours": 24,
+  "training_countries": ["CN", "DE", "IS", "US", "JP"],
+  "variance_floor": 1e-8,
+  "epochs": 50,
+  "updates_per_epoch": 200,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "gradient_clip_norm": 10.0,
+  "select_draws": 128,
+  "final_draws": 256,
+  "evaluation_batch_size": 32,
+  "fit_probe_samples": 256,
+  "cpu_threads": 4,
+  "device": "cuda:0",
+  "gate": {
+    "kind": "exp_decay",
+    "tau_hours": 6,
+    "constant": "arithmetic_mean_of_decay_tau6",
+    "trainable": false
+  },
+  "train_update_cap_total": 20000,
+  "banks": {
+    "pq": "./results/experiments/pointwise_full_pack_108f9a0/artifacts/pq"
+  },
+  "exposures": {
+    "pq": "./results/experiments/pointwise_full_pack_108f9a0/artifacts/pq/exposure.npz"
+  },
+  "baseline_completion": "./results/experiments/stage1_formal_e2c4098/artifacts/diffpts_pq/completion.json",
+  "state_pq_completion": "./results/experiments/state_formal_150f537/artifacts/state_pq_pq/completion.json",
+  "case_ids": [
+    "40b87956858b6939584c4742b552fc801f3d6db5829124a3e4afb3b3f956128f",
+    "03775f54c578324cd679632e06629242291e0e0a205a71b1077e0ede2e95282b"
+  ]
+}

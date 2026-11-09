@@ -1,0 +1,83 @@
+{
+  "change_id": "WP-20261015-FIVE-COUNTRY-MODEL-DATA-V1",
+  "revision": "1.1",
+  "purpose": "five-country retrospective probability research data preparation; China target",
+  "user_direction": "approved_20261015_five_countries_participate_with_retained_validation_periods",
+  "training_authorized": false,
+  "test_observations_access": false,
+  "new_evaluation_observations_access": false,
+  "history_hours": null,
+  "history_policy": "caller_explicit_and_bounded_by_actual_contiguous_permitted_support",
+  "horizons_hours": [1, 3, 6, 12],
+  "target": "future_window_maximum_Q_not_point_Q_at_horizon",
+  "legacy": {
+    "datasets": ["da_tl_cn", "camels_de_1h", "lamah_ice"],
+    "policy": "inherit_current_physical_role_exports_no_reassignment",
+    "fit_source": "._prob_flood_ab720ba/results/experiments/prob_flood_prepare_ab720ba_20261010/artifacts/data",
+    "role_export": "./external-home/data_org_fixed_export_173d0b6/prepared",
+    "development_use": "historically_exposed_not_new_blind_evaluation",
+    "test_policy": "never_read_or_relabel",
+    "uncovered_station_role": "not_available_in_current_permitted_export"
+  },
+  "new_source_roles": [
+    {
+      "datasets": ["camelsh_us_v6", "waterbench_iowa_v2_7087806"],
+      "clock": "each_source_native_clock_do_not_align_unknown_WaterBench_timezone",
+      "reason": "shared_US_calendar_boundaries_preserve_full_years_and_WaterBench_continuous_validation",
+      "periods": [
+        {"role": "fit", "start": null, "end_exclusive": "2015-10-01T00:00:00"},
+        {"role": "select", "start": "2015-10-01T00:00:00", "end_exclusive": "2016-10-01T00:00:00"},
+        {"role": "calibration", "start": "2016-10-01T00:00:00", "end_exclusive": "2017-10-01T00:00:00"},
+        {"role": "evaluation_reserved", "start": "2017-10-01T00:00:00", "end_exclusive": null}
+      ]
+    },
+    {
+      "datasets": ["japan_mlit_tone_existing", "jp_jma_maebashi_mlit_kurihashi_2015_2024"],
+      "clock": "JST",
+      "reason": "six_initial_calendar_years_candidate_fit_followed_by_separate_selection_calibration_and_two_year_reserved_evaluation",
+      "periods": [
+        {"role": "fit", "start": null, "end_exclusive": "2021-01-01T00:00:00"},
+        {"role": "select", "start": "2021-01-01T00:00:00", "end_exclusive": "2022-01-01T00:00:00"},
+        {"role": "calibration", "start": "2022-01-01T00:00:00", "end_exclusive": "2023-01-01T00:00:00"},
+        {"role": "evaluation_reserved", "start": "2023-01-01T00:00:00", "end_exclusive": null}
+      ]
+    }
+  ],
+  "role_read_policy": {
+    "preparation_real_samples": ["fit", "select"],
+    "calibration": "metadata_only_until_models_and_probability_calibration_protocol_fixed",
+    "evaluation_reserved": "metadata_only_no_values",
+    "legacy_development": "existing_results_only_for_this_preparation"
+  },
+  "identity_policy": {
+    "US": "canonical_USGS_id_shared_across_CAMELSH_and_WaterBench",
+    "JP": "canonical_MLIT_Q_station_id_shared_across_pair_and_Q_only",
+    "MLIT:303031283301030": {
+      "primary_Q_source_both_routes": "jp_jma_maebashi_mlit_kurihashi_2015_2024",
+      "q_only_operation": "mask_P_from_latest_accepted_pair_Q",
+      "legacy_cache": "retain_historical_locator_exclude_duplicate_station_from_model_pool",
+      "reason": "accepted_pair_contains_later_Q_gap_recovery; smoke_fit_scales_differ_from_older_MLIT_cache"
+    },
+    "duplicate_sampling": "one_canonical_station_time_role_per_route_no_source_copy_as_independent_observation",
+    "cross_route_comparison": "same_station_event_identity_and_roles_required",
+    "nesting": "retain_known_components_unknown_is_not_independent"
+  },
+  "boundary_policy": {
+    "sample": "all_input_and_supervision_points_inside_one_permitted_role_and_contiguous_time_support",
+    "source_event": "never_split_known_source_event_or_dependency_component_across_roles",
+    "continuous_event": "calendar_cut_is_candidate_until_boundary_event_integrity_checked; crossing_events_excluded_as_whole",
+    "reserved_edge": "do_not_inspect_reserved_values_to_tune_boundary; keep_unverified_boundary_status_visible",
+    "claim": "time_partitions_and_station_components_do_not_prove_independent_storms"
+  },
+  "scaling": "no_new_fit_in_this_reader_validation; future_scalers_and_extreme_thresholds_fit_only_after_role_event_integrity_confirmed",
+  "information_policy": {
+    "hindcast": "time_axis_order_and_interval_end_must_not_exceed_origin; release_latency_unknown_remains_unknown",
+    "operational": "all_required_inputs_have_verified_available_at_lte_origin",
+    "training_chronology": "retrospective_transfer_not_strict_as_of_historical_China_origin",
+    "future_observations": "supervision_only",
+    "missing_P": "missing_mask_not_rainfall_zero",
+    "reanalysis_P": "hindcast_route_separate_from_operational_observation"
+  },
+  "auxiliary": ["hei_luoma_daily", "geodata_poyang_samples", "gxsw_recent_capture"],
+  "completion_status": "role_direction_approved_time_policy_prepared_implementation_and_boundary_event_checks_pending"
+}

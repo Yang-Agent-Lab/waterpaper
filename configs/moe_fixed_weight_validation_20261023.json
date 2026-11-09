@@ -1,0 +1,22 @@
+{
+  "experiment_id": "WP-20261023-MOE-FIXED-WEIGHT-V1",
+  "revision": "1.0",
+  "scope": "FIXED_WEIGHT_DEPENDENCE_ONLY",
+  "baseline_commit": "7e02d9e090c356f5b7ecaeb1a93c08c3e7dc07d0",
+  "source_config": "configs/m_extreme_augmentation_v1_20261023.json",
+  "prepared": "./results/experiments/m_extreme_augmentation_v1_20261023/pilot_prepare_envfix/artifacts",
+  "expected_origins": 262,
+  "expected_stations": 9,
+  "expected_source_units": 17,
+  "scenarios": 64,
+  "seed": 900002,
+  "reverse_steps": 20,
+  "original_batch": 32,
+  "draw_chunk": 32,
+  "engineering_subset_indices": [0, 1],
+  "formal_modes": ["uniform", "no_experts"],
+  "cached_modes": {"dynamic": "M0_K64", "no_M": "D500_K64"},
+  "cpu_threads": 4,
+  "optimizer_updates": 0,
+  "source_sync": "local/server only; consolidated archive after scheme completion"
+}

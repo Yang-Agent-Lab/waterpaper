@@ -1,0 +1,123 @@
+{
+  "change_id": "WP-20261018-B2-TEMPORAL-STATE-V1",
+  "condition_id": "WP-20261018-B2-TEMPORAL-STATE-V1-FORMAL",
+  "config_source": "configs/b2_temporal_state_formal_v1.json",
+  "model_core_source_commit": "ba42b19b16ecfffa5f9291214d682bc4778340e6",
+  "model_core_sha256": "5fbcd65e602a924c90503c0f0a94942d03c7d8fdab3f033f5835ddae75776193",
+  "model_core_cpu_run_record": "./results/experiments/b2_temporal_core_cpu_ba42b19/run_record.json",
+  "model_core_cpu_checks": "./results/experiments/b2_temporal_core_cpu_ba42b19/checks.json",
+  "diffpts_source_path": "./reference/supporting/code/DiffPTS/e9a7d1d56bd40b4bcfced29b430f6c5be6f2a424",
+  "diffpts_author_sha": "e9a7d1d56bd40b4bcfced29b430f6c5be6f2a424",
+  "experiment_root": "./results/experiments/b2_temporal_state_v1_20261018",
+  "state": "APPROVED_FORMAL",
+  "groups": [
+    "stats_b2",
+    "temporal_summary",
+    "temporal_lead",
+    "fixed_segments",
+    "dynamic_segments"
+  ],
+  "seed": 2,
+  "history_hours": 24,
+  "forecast_hours": 24,
+  "route": "pq",
+  "input_fields": ["historical_P", "historical_Q"],
+  "target": "future_hourly_Q",
+  "variance_floor": 1e-8,
+  "tau_hours": 6.0,
+  "learning_rate": 0.001,
+  "gradient_clip_norm": 10.0,
+  "epochs": 3,
+  "updates_per_epoch": 1000,
+  "batch_size": 64,
+  "candidate_checkpoint_updates": [1000, 2000, 3000],
+  "select_draws": 128,
+  "final_draws": 256,
+  "expected_china_select_rows": 1706,
+  "expected_china_select_stations": 9,
+  "expected_china_select_source_events": 17,
+  "evaluation_batch_size": 32,
+  "fit_probe_samples": 256,
+  "cpu_threads": 4,
+  "device": "cuda:0",
+  "training_countries": ["CN", "DE", "IS", "US", "JP"],
+  "banks": {
+    "pq": "./results/experiments/pointwise_full_pack_108f9a0/artifacts/pq"
+  },
+  "expected_bank_sha256": "2957aabab9a36247168e3ee05a6cd0f4490ac2f31395b2cd53c384668d7ce81c",
+  "baseline_completion": "./results/experiments/pointwise_data_mix_formal_20261018_83db4f4/artifacts/C/seed_2/model/completion.json",
+  "baseline_checkpoint_sha256": "e6befbbab3c52ca5b67e7d0b30854f51486bf9884ecf2b00b864071153ea14ef",
+  "baseline_selected_updates": 1000,
+  "baseline_formal_updates": 3000,
+  "baseline_exposure_key": "accepted_bank_indices",
+  "baseline_exposure_shape": [1, 3000, 64],
+  "exposure_mode": "C accepted-bank index sequence; first 3000 updates and all 64 rows per update, identical across all five formal arms",
+  "active_parameter_reference": 2488,
+  "active_parameter_tolerance_fraction": 0.1,
+  "expected_active_parameter_counts": {
+    "stats_b2": 2488,
+    "temporal_summary": 2490,
+    "temporal_lead": 2375,
+    "fixed_segments": 2627,
+    "dynamic_segments": 2627
+  },
+  "module_conditions": {
+    "stats_b2": {
+      "history_features": 19,
+      "hidden_dimensions": [32, 32],
+      "readout_dimensions": [32, 24]
+    },
+    "temporal_summary": {
+      "input_channels": ["P", "Q", "relative_time"],
+      "temporal_convolutions": [
+        {"kernel_size": 5, "dilation": 1},
+        {"kernel_size": 5, "dilation": 5}
+      ],
+      "convolution_width": 14,
+      "summary_dimensions": [14, 32],
+      "readout_dimensions": [32, 24],
+      "pooling": "one shared summary for all forecast leads"
+    },
+    "temporal_lead": {
+      "encoder": "same as temporal_summary",
+      "lead_query_dimensions": [1, 14, 14],
+      "key_dimensions": [14, 14],
+      "value_dimensions": [14, 14],
+      "readout_dimensions": [14, 32, 1],
+      "pooling": "forecast lead queries the full 24-hour memory"
+    },
+    "fixed_segments": {
+      "encoder": "same as temporal_lead",
+      "segments": 6,
+      "fixed_segment_hours": 4,
+      "assignment": "hour_index // 4",
+      "segment_query_dimensions": [14, 14],
+      "segment_coordinates_projection": "2 -> 14; actual mean member hour (-23..0)/23 and duration/24",
+      "segment_projection": "reuse temporal_lead key/value and readout; add shared segment query and coordinate projection"
+    },
+    "dynamic_segments": {
+      "encoder": "same as temporal_lead",
+      "maximum_segments": 6,
+      "segment_query_dimensions": [14, 14],
+      "saliency": "1 - cosine(key(h[t-1]), segment_query(h[t])); clamp_min(0)",
+      "first_timestep_score": 0.0,
+      "anchor_score_threshold": 1e-8,
+      "nms_radius_hours": 2,
+      "selection_tie_rule": "descending score, then earlier time; suppress distance <= 2; final anchors sorted by time",
+      "flat_history_rule": "if per-sample raw historical P and Q are both flat within 1e-8 relative to the first hour, use one anchor at index 11",
+      "no_candidate_rule": "use one anchor at index 11",
+      "assignment": "nearest anchor; equal distance chooses earlier anchor",
+      "pooling": "saliency-weighted mean; if total segment weight <= 1e-8, use uniform mean",
+      "segment_coordinates": "[mean member hour relative to issue time (-23..0), segment duration in hours], Linear(2,14) added to pooled representation",
+      "segment_coordinates_projection": "2 -> 14; actual mean member hour (-23..0)/23 and duration/24",
+      "segment_projection": "reuse temporal_lead key/value and readout; add shared segment query and coordinate projection"
+    }
+  },
+  "gpu_lock": "./artifacts/pointwise_gpu0.lock",
+  "gpu_budget_total_seconds": 3600.0,
+  "gpu_budget_prior_check_upper_bound_seconds": 6.1,
+  "training_update_cap_total": 15000,
+  "training_report": "training_report_v1 three-page report per group",
+  "monitor_mode": "enabled",
+  "scientific_status": "single_seed_development_result; no stability or general efficacy claim"
+}

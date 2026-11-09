@@ -1,0 +1,459 @@
+{
+  "schema_version": "existing-data-integration-v2.1",
+  "change_id": "WP-20261015-EXISTING-DATA-INTEGRATION-V2",
+  "status": "lightweight_access_manifest_not_training_integration",
+  "project_slug": "waterpaper",
+  "science_project_ref": "hzwwxlaxyxnwsxwpjwpt",
+  "database_readback_at": "2026-10-15",
+  "forecast_contract": {
+    "issue_time": "t",
+    "input_rule": "historical and current information available_at<=t; input_end<=t",
+    "future_observations": "supervision_only_never_predictor_input",
+    "history_hours": "unassigned; old H12 is not research requirement",
+    "forecast_target": "unassigned; distinguish Q(t+6), max Q(t+1..t+6), and true-peak-minus6h origins",
+    "split_rule": "events/stations/overlap groups before windows/fit scalers; no all-data-fit assignment",
+    "operational_input_rule": "timestamp<=t alone insufficient; preserve interval_end and release availability; reanalysis is historical hindcast unless availability proven"
+  },
+  "sources": [
+    {
+      "dataset_key": "camels_de_1h",
+      "country_code": "DE",
+      "source_url": "https://doi.org/10.5880/fidgeo.2026.045",
+      "source_version": "existing_snapshot",
+      "nominal_interval_minutes": "60",
+      "time_zone": "unknown",
+      "variables": {
+        "P": "mm/h",
+        "Q": "m3/s"
+      },
+      "server_uri": "teacherbox:./data/catalog/integrated_station_index_v2.csv",
+      "inventory_status": "partial",
+      "model_readiness": "legacy_paired_QP",
+      "observed_at": "2026-10-14 07:06:42.8055+00",
+      "canonical_source_identity": "camels_de_1h",
+      "planned_role": "unassigned",
+      "source_preparation_status": "partial",
+      "model_input_preparation_status": "not_constructed_in_this_task",
+      "p_origin": "author original meteorological observations; author gapfilled P separate",
+      "q_origin": "observed; simulated benchmark Q excluded",
+      "native_clock": "UTC in station metadata; Science dataset-level unknown conflicts with more specific registry. Interval label unknown",
+      "utc_alignment_eligibility": "station_metadata_UTC_interval_availability_pending",
+      "recommended_route": "proposed_hourly_PQ_expanded_station_pool",
+      "gaps": [
+        "unknown interval label and operational P availability",
+        "preserve original P versus author gapfilled column",
+        "new event split and country/station roles unassigned"
+      ],
+      "duplicate_or_nested_relations": [
+        "upstream/downstream and same storm station dependence require grouping"
+      ],
+      "license_status": "unknown_or_not_reverified",
+      "evidence": {
+        "database": "Science hzwwxlaxyxnwsxwpjwpt public.research_datasets and public.research_dataset_readiness; project_slug=waterpaper; read2026-10-15",
+        "clock_status": "documented_in_accepted_metadata_not_new_observation_reparse",
+        "station_registry": "./external-home/multicountry_QC_fix_1fa15b9/results/experiments/multicountry_harmonization_full_1fa15b9_20261005/artifacts/registry.jsonl",
+        "clock_fields": [
+          "Science research_datasets.time_zone=unknown",
+          "registry station timezone=UTC and provenance.timezone=UTC; interval_label=unknown"
+        ],
+        "operational_release_latency": "unknown; actual available_at must be verified before operational claims"
+      }
+    },
+    {
+      "dataset_key": "camelsh_us_v6",
+      "country_code": "US",
+      "source_url": "https://zenodo.org/records/16729675",
+      "source_version": "v6",
+      "nominal_interval_minutes": "60",
+      "time_zone": "UTC+0",
+      "variables": {
+        "P": "absent_in_observation_archive",
+        "Q": "m3/s accepted_inventory_metadata",
+        "H": "unverified_not_model_available"
+      },
+      "server_uri": "teacherbox:./data/Hourly2.zip",
+      "inventory_status": "downloaded_profiled",
+      "model_readiness": "Q_only_needs_P",
+      "observed_at": "2026-10-14 07:06:42.8055+00",
+      "canonical_source_identity": "camelsh_us_v6",
+      "planned_role": "unassigned",
+      "source_preparation_status": "downloaded_profiled",
+      "model_input_preparation_status": "not_constructed_in_this_task",
+      "p_origin": "absent_in_Hourly2_Q_archive; existing forcing index is not acquired matched P",
+      "q_origin": "USGS observations in CAMELSH Hourly2 v6",
+      "native_clock": "hours since 1980-01-01 UTC; accepted inventory metadata",
+      "utc_alignment_eligibility": "UTC_inventory_qualified_no_new_raw_reparse",
+      "recommended_route": "proposed_Q_only_autoregression_or_pretraining; paired_PQ_requires_existing_P_match",
+      "gaps": [
+        "no paired P prepared",
+        "event/station split and overlap groups unassigned",
+        "inventory full-period quantiles forbidden as training scales/thresholds"
+      ],
+      "duplicate_or_nested_relations": [
+        "113 WaterBench USGS IDs also in Hourly2 and forcing index; same ID not proof equal values/time"
+      ],
+      "license_status": "unknown_or_not_reverified",
+      "evidence": {
+        "database": "Science hzwwxlaxyxnwsxwpjwpt public.research_datasets and public.research_dataset_readiness; project_slug=waterpaper; read2026-10-15",
+        "clock_status": "documented_in_accepted_metadata_not_new_observation_reparse",
+        "operational_release_latency": "unknown; actual available_at must be verified before operational claims"
+      },
+      "dataset_declared_variables": {
+        "H": "m",
+        "P": "absent_in_observation_archive",
+        "Q": "m3/s"
+      },
+      "locally_verified_variables": {
+        "Q": "accepted prior full inventory metadata; not raw-reparsed in this run",
+        "H": "unverified_not_model_available",
+        "P": "absent_in_Hourly2_Q_archive"
+      }
+    },
+    {
+      "dataset_key": "da_tl_cn",
+      "country_code": "CN",
+      "source_url": "https://zenodo.org/records/15608461",
+      "source_version": "existing_snapshot",
+      "nominal_interval_minutes": "60",
+      "time_zone": "unknown",
+      "variables": {
+        "P": "mm/h",
+        "Q": "m3/s"
+      },
+      "server_uri": "teacherbox:./data/catalog/integrated_station_index_v2.csv",
+      "inventory_status": "partial",
+      "model_readiness": "legacy_paired_QP",
+      "observed_at": "2026-10-14 07:06:42.8055+00",
+      "canonical_source_identity": "da_tl_cn",
+      "planned_role": "unassigned",
+      "source_preparation_status": "partial",
+      "model_input_preparation_status": "not_constructed_in_this_task",
+      "p_origin": "published observed P; original interval semantics unknown",
+      "q_origin": "published observed Q event segments",
+      "native_clock": "unknown timezone and interval label; preserve source row/event identity",
+      "utc_alignment_eligibility": "not_qualified",
+      "recommended_route": "proposed_hourly_PQ_existing_events",
+      "gaps": [
+        "event split independence and cross-target overlap must be preserved",
+        "first12 source_prefix_unverified; 12 is not a new history requirement",
+        "event snippets cannot be treated as continuous years"
+      ],
+      "duplicate_or_nested_relations": [
+        "same source event across targets; preserve overlap_group_id"
+      ],
+      "license_status": "CC-BY4.0 per accepted registry; not reverified",
+      "evidence": {
+        "database": "Science hzwwxlaxyxnwsxwpjwpt public.research_datasets and public.research_dataset_readiness; project_slug=waterpaper; read2026-10-15",
+        "clock_status": "documented_in_accepted_metadata_not_new_observation_reparse",
+        "station_registry": "./external-home/multicountry_QC_fix_1fa15b9/results/experiments/multicountry_harmonization_full_1fa15b9_20261005/artifacts/registry.jsonl",
+        "operational_release_latency": "unknown; actual available_at must be verified before operational claims"
+      }
+    },
+    {
+      "dataset_key": "geodata_poyang_samples",
+      "country_code": "CN",
+      "source_url": "unknown",
+      "source_version": "existing_snapshot",
+      "nominal_interval_minutes": null,
+      "time_zone": "unknown",
+      "variables": {
+        "variables": "sample_metadata_only"
+      },
+      "server_uri": "teacherbox:./data/raw/geodata_poyang",
+      "inventory_status": "metadata_only",
+      "model_readiness": "sample_only",
+      "observed_at": "2026-10-14 07:06:42.8055+00",
+      "canonical_source_identity": "geodata_poyang_samples",
+      "planned_role": "unassigned",
+      "source_preparation_status": "metadata_only",
+      "model_input_preparation_status": "not_constructed_in_this_task",
+      "p_origin": "unknown sample metadata",
+      "q_origin": "workbook sample; official provenance unknown",
+      "native_clock": "unknown; few sample rows only",
+      "utc_alignment_eligibility": "not_qualified",
+      "recommended_route": "proposed_schema_or_application_context_only",
+      "gaps": [
+        "only sample files; no continuous training archive",
+        "units/provenance/license unknown"
+      ],
+      "duplicate_or_nested_relations": [
+        "sample rows not independent flood inventory"
+      ],
+      "license_status": "unknown_or_not_reverified",
+      "evidence": {
+        "database": "Science hzwwxlaxyxnwsxwpjwpt public.research_datasets and public.research_dataset_readiness; project_slug=waterpaper; read2026-10-15",
+        "clock_status": "documented_in_accepted_metadata_not_new_observation_reparse",
+        "operational_release_latency": "unknown; actual available_at must be verified before operational claims"
+      }
+    },
+    {
+      "dataset_key": "gxsw_recent_capture",
+      "country_code": "CN",
+      "source_url": "http://124.227.12.36:8259/",
+      "source_version": "existing_snapshot",
+      "nominal_interval_minutes": null,
+      "time_zone": "unknown",
+      "variables": {
+        "H": "snapshot",
+        "P": "snapshot",
+        "Q": "partial_stations_snapshot"
+      },
+      "server_uri": "teacherbox:./data/raw/gxsw_capture",
+      "inventory_status": "metadata_only",
+      "model_readiness": "recent_snapshots_not_continuous_archive",
+      "observed_at": "2026-10-14 07:06:42.8055+00",
+      "canonical_source_identity": "gxsw_recent_capture",
+      "planned_role": "unassigned",
+      "source_preparation_status": "metadata_only",
+      "model_input_preparation_status": "not_constructed_in_this_task",
+      "p_origin": "recent dashboard snapshots; station variable/time/units require qualification",
+      "q_origin": "partial station Q/H snapshots; water level is not discharge",
+      "native_clock": "recent captures from2026-10-08; timezone and observation/publish lag unknown",
+      "utc_alignment_eligibility": "not_qualified",
+      "recommended_route": "proposed_recent_input_schema_and_coverage_check_only",
+      "gaps": [
+        "short snapshots not continuous flood archive",
+        "do not restart capture; units and H/Q target identity pending"
+      ],
+      "duplicate_or_nested_relations": [
+        "same station at repeated captures not independent events"
+      ],
+      "license_status": "unknown_or_not_reverified",
+      "evidence": {
+        "database": "Science hzwwxlaxyxnwsxwpjwpt public.research_datasets and public.research_dataset_readiness; project_slug=waterpaper; read2026-10-15",
+        "clock_status": "documented_in_accepted_metadata_not_new_observation_reparse",
+        "operational_release_latency": "unknown; actual available_at must be verified before operational claims"
+      }
+    },
+    {
+      "dataset_key": "hei_luoma_daily",
+      "country_code": "CN",
+      "source_url": "https://zenodo.org/records/20725049",
+      "source_version": "existing_snapshot",
+      "nominal_interval_minutes": "1440",
+      "time_zone": "unknown",
+      "variables": {
+        "P": "Luoma_units_cumulative_semantics_pending",
+        "Q": "units_from_receipt"
+      },
+      "server_uri": "teacherbox:./data/raw/hei_luoma_floods_zenodo_20725049",
+      "inventory_status": "metadata_only",
+      "model_readiness": "auxiliary_daily_units_pending",
+      "observed_at": "2026-10-14 07:06:42.8055+00",
+      "canonical_source_identity": "hei_luoma_daily",
+      "planned_role": "unassigned",
+      "source_preparation_status": "metadata_only",
+      "model_input_preparation_status": "not_constructed_in_this_task",
+      "p_origin": "published daily P; Luoma cumulative semantics/units pending",
+      "q_origin": "published daily flood Q; units require receipt review",
+      "native_clock": "daily; timezone unknown",
+      "utc_alignment_eligibility": "not_qualified",
+      "recommended_route": "proposed_daily_process_auxiliary_only",
+      "gaps": [
+        "daily cannot be interpolated into hourly truth",
+        "units and cumulative semantics pending",
+        "workbook titles mention50 but accepted inventory10 events each; do not infer unseen events"
+      ],
+      "duplicate_or_nested_relations": [
+        "do not count daily records as new independent hourly floods"
+      ],
+      "license_status": "unknown_or_not_reverified",
+      "evidence": {
+        "database": "Science hzwwxlaxyxnwsxwpjwpt public.research_datasets and public.research_dataset_readiness; project_slug=waterpaper; read2026-10-15",
+        "clock_status": "documented_in_accepted_metadata_not_new_observation_reparse",
+        "operational_release_latency": "unknown; actual available_at must be verified before operational claims"
+      }
+    },
+    {
+      "dataset_key": "japan_mlit_tone_existing",
+      "country_code": "JP",
+      "source_url": "https://www1.river.go.jp/",
+      "source_version": "existing_snapshot_clock_repair_v1_1",
+      "nominal_interval_minutes": "60",
+      "time_zone": "JST UTC+09:00",
+      "variables": {
+        "P": "not_downloaded",
+        "Q": "m3/s"
+      },
+      "server_uri": "teacherbox:./data/raw/japan_mlit_tone_Q_2015_2024",
+      "inventory_status": "partial",
+      "model_readiness": "partial_mapping_Q_only_needs_P",
+      "observed_at": "2026-10-14 07:33:36.717644+00",
+      "canonical_source_identity": "japan_mlit_tone_existing",
+      "planned_role": "unassigned",
+      "source_preparation_status": "partial",
+      "model_input_preparation_status": "not_constructed_in_this_task",
+      "p_origin": "not acquired for broad 112-station Q asset",
+      "q_origin": "MLIT measured discharge; 61/112 stations have valid Q in accepted cache",
+      "native_clock": "JST UTC+09:00; source 24:00 normalized to next midnight; inventory-jp-clock-v1.1",
+      "utc_alignment_eligibility": "JST_convertible_with_station_mapping_and_conflict_flags",
+      "recommended_route": "proposed_Q_only; use corrected dedup cache; pair rainfall only after identity qualification",
+      "gaps": [
+        "51 registered stations without valid Q",
+        "partial native station mapping; broad paired P missing",
+        "empty header-only chunks remain empty"
+      ],
+      "duplicate_or_nested_relations": [
+        "Kurihashi Q is reused in new one-pair Japanese source; no independent new Q station claim"
+      ],
+      "license_status": "unknown_or_not_reverified",
+      "prepared_entry": "._japan_clock_3b0767c/results/experiments/japan_clock_increment_v1_1/artifacts/japan_dedup_midnight_v1_1.sqlite",
+      "evidence": {
+        "database": "Science hzwwxlaxyxnwsxwpjwpt public.research_datasets and public.research_dataset_readiness; project_slug=waterpaper; read2026-10-15",
+        "clock_status": "documented_in_accepted_metadata_not_new_observation_reparse",
+        "operational_release_latency": "unknown; actual available_at must be verified before operational claims"
+      }
+    },
+    {
+      "dataset_key": "jp_jma_maebashi_mlit_kurihashi_2015_2024",
+      "country_code": "JP",
+      "source_url": "https://www.data.jma.go.jp/risk/obsdl/index.php",
+      "source_version": "retrieved 2026-10-15; prepare 6a69041; provenance a9e322c",
+      "nominal_interval_minutes": "60",
+      "time_zone": "JST (UTC+09:00)",
+      "variables": {
+        "P": {
+          "kind": "JMA point observation",
+          "unit": "mm per preceding hour",
+          "future_input_used": false,
+          "normal_quality_code": "8"
+        },
+        "Q": {
+          "kind": "MLIT observed streamflow",
+          "unit": "m^3/s"
+        },
+        "source_clock": "JST / source day hours 1 through 24 normalized to next midnight",
+        "spatial_support": "point rainfall; basin area support unknown"
+      },
+      "server_uri": "./external-home/jp_hourly_source_only_a9e322c/results/experiments/jp_source_only_a9e322c_20261015/artifacts/point_P_Q_2015_2024_uniform_CSV_quality.csv",
+      "inventory_status": "downloaded_temporal_QC_complete",
+      "model_readiness": "point_P_Q_temporal_verified_spatial_partial_split_unassigned",
+      "observed_at": "2026-10-14 17:56:55.147671+00",
+      "canonical_source_identity": "jp_jma_maebashi_mlit_kurihashi_2015_2024",
+      "planned_role": "unassigned",
+      "source_preparation_status": "downloaded_temporal_QC_complete",
+      "model_input_preparation_status": "not_constructed_in_this_task",
+      "p_origin": "JMA Maebashi point rain gauge s47624, preceding-hour mm; quality8 normal",
+      "q_origin": "MLIT Kurihashi station303031283301030 measured Q",
+      "native_clock": "JST normalized 1..24 source clock; preceding-hour rain available only after interval end and actual release",
+      "utc_alignment_eligibility": "JST_explicit_convertible_release_latency_unknown",
+      "recommended_route": "proposed_point_P_Q_exploratory_sensitivity; not catchment_average_P",
+      "gaps": [
+        "point rain spatial support/upstream boundary partial",
+        "license unknown; no official role assignment",
+        "905 source missing Q retained; no interpolation"
+      ],
+      "duplicate_or_nested_relations": [
+        "Q overlaps existing MLIT Tone chunks; use same canonical station identity"
+      ],
+      "license_status": "unknown_or_not_reverified",
+      "evidence": {
+        "database": "Science hzwwxlaxyxnwsxwpjwpt public.research_datasets and public.research_dataset_readiness; project_slug=waterpaper; read2026-10-15",
+        "clock_status": "documented_in_accepted_metadata_not_new_observation_reparse",
+        "operational_release_latency": "unknown; actual available_at must be verified before operational claims",
+        "accepted_catalog": "./data/catalog/jp_hourly_parent_acceptance_20261015.json"
+      }
+    },
+    {
+      "dataset_key": "lamah_ice",
+      "country_code": "IS",
+      "source_url": "https://essd.copernicus.org/articles/16/2741/2024/",
+      "source_version": "QC_fix_1fa15b9",
+      "nominal_interval_minutes": "60",
+      "time_zone": "GMT UTC+0",
+      "variables": {
+        "P": "mm/h reanalysis",
+        "Q": "m3/s"
+      },
+      "server_uri": "teacherbox:./external-home/multicountry_QC_fix_1fa15b9/results/experiments/multicountry_harmonization_full_1fa15b9_20261005/artifacts/registry.jsonl",
+      "inventory_status": "partial",
+      "model_readiness": "legacy_paired_QP",
+      "observed_at": "2026-10-14 07:06:42.8055+00",
+      "canonical_source_identity": "lamah_ice",
+      "planned_role": "unassigned",
+      "source_preparation_status": "partial",
+      "model_input_preparation_status": "not_constructed_in_this_task",
+      "p_origin": "ERA5-Land / RAV-II reanalysis; not real-time rainfall forecast",
+      "q_origin": "measured Q; flags 100 estimated,250 missing retained",
+      "native_clock": "GMT UTC+0; Q hour derived from complete 24-row day ordering; malformed blocks excluded; start-labelled intervals available at label+1hour",
+      "utc_alignment_eligibility": "qualified_for_historical_alignment_with_derived_clock_flags",
+      "recommended_route": "proposed_hourly_PQ_reanalysis_hindcast_separate_from_operational",
+      "gaps": [
+        "reanalysis release time not operational input at issue time",
+        "derived clock and Q quality eligibility retained",
+        "all basin A vs B/C nesting not independent"
+      ],
+      "duplicate_or_nested_relations": [
+        "A full upstream catchments only; B/C intermediate delineations are not new observations"
+      ],
+      "license_status": "Q CC-BY-NC4.0; other CC-BY4.0",
+      "evidence": {
+        "database": "Science hzwwxlaxyxnwsxwpjwpt public.research_datasets and public.research_dataset_readiness; project_slug=waterpaper; read2026-10-15",
+        "clock_status": "documented_in_accepted_metadata_not_new_observation_reparse",
+        "station_registry": "./external-home/multicountry_QC_fix_1fa15b9/results/experiments/multicountry_harmonization_full_1fa15b9_20261005/artifacts/registry.jsonl",
+        "clock_fields": [
+          "registry interval_label=start",
+          "registry available_at=source label plus1hour; forecast origin must be end of last input interval",
+          "provenance.clock_method_parent_decision and coverage.clock; derived_complete_daily_order"
+        ],
+        "operational_release_latency": "unknown; actual available_at must be verified before operational claims"
+      }
+    },
+    {
+      "dataset_key": "waterbench_iowa_v2_7087806",
+      "country_code": "US",
+      "source_url": "https://zenodo.org/records/7087806",
+      "source_version": "v2 / Zenodo 7087806",
+      "nominal_interval_minutes": "60",
+      "time_zone": "unknown",
+      "variables": {
+        "P": {
+          "kind": "NOAA Stage IV multi-sensor catchment mean",
+          "unit": "mm per hour",
+          "future_input_used": false
+        },
+        "Q": {
+          "kind": "USGS observations aggregated hourly",
+          "native_unit": "ft^3/s",
+          "prepared_unit": "m^3/s",
+          "conversion_factor": 0.028316846592
+        },
+        "time_zone": "unknown"
+      },
+      "server_uri": "./data/raw/waterbench_iowa/v2_7087806",
+      "inventory_status": "downloaded_verified_SI_prepared",
+      "model_readiness": "P_Q_saved_timezone_unknown_split_unassigned",
+      "observed_at": "2026-10-14 17:42:49.406119+00",
+      "canonical_source_identity": "waterbench_iowa_v2_7087806",
+      "planned_role": "unassigned",
+      "source_preparation_status": "downloaded_verified_SI_prepared",
+      "model_input_preparation_status": "not_constructed_in_this_task",
+      "p_origin": "NOAA Stage IV multisensor catchment mean estimate; not point gauge or future observed input",
+      "q_origin": "USGS measured Q hourly aggregation; ft3/s ×0.028316846592 -> m3/s",
+      "native_clock": "native hourly clock timezone unknown; do not guess UTC or align externally",
+      "utc_alignment_eligibility": "not_qualified",
+      "recommended_route": "proposed_native_clock_local_PQ_exploration; cross-source_alignment_waits_timezone",
+      "gaps": [
+        "timezone unknown blocks external time alignment and strict issue-time qualification",
+        "P release latency unknown",
+        "all 125 have missing P/Q; preserve gaps"
+      ],
+      "duplicate_or_nested_relations": [
+        "113/125 USGS IDs shared with Hourly2; 98 nesting edges, 28 undirected components; neither station nor component equals independent storm"
+      ],
+      "license_status": "CC-BY-4.0",
+      "prepared_entry": "._waterbench_prepare_v1/results/experiments/waterbench_prepare_4a957fc/artifacts/observations_si",
+      "evidence": {
+        "database": "Science hzwwxlaxyxnwsxwpjwpt public.research_datasets and public.research_dataset_readiness; project_slug=waterpaper; read2026-10-15",
+        "clock_status": "documented_in_accepted_metadata_not_new_observation_reparse",
+        "operational_release_latency": "unknown; actual available_at must be verified before operational claims",
+        "accepted_catalog": "./data/catalog/waterbench_parent_acceptance_20261015.json"
+      }
+    }
+  ],
+  "global_limits": [
+    "no training/download/windows/threshold fitting/test observations read",
+    "old fixed25 CN/DE/IS inputs unchanged; source inventory is larger than fixed subset",
+    "all routes proposed; no final fit/cal/select/dev/test roles assigned"
+  ]
+}

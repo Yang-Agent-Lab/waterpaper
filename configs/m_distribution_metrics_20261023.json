@@ -1,0 +1,46 @@
+{
+  "experiment_id":"WP-20261023-M-DISTRIBUTION-METRICS-V1",
+  "revision":"1.0",
+  "font_file":"./runtime/eventflow_aux/NotoReportSubset.ttf",
+  "cpu_threads":4,
+  "expected_origins":1706,
+  "expected_scenarios":256,
+  "expected_horizon":24,
+  "canonical_expected":{"truth_sha256":"0aa5aaec6142cad58d0b8973d1034c4a0eeb0e0a2ee85f2f6216c680eb2665ba","thresholds_sha256":"c408096e7327ede604c9994b133f0793ae436956aea8cc158df5c5208110cc1d","sample_ids_sha256":"8d6d1564df57f280fddd291d4ab67aa0e86a1308b1ed87ef157e9304b822d9ab"},
+  "canonical_npz":"./results/experiments/d500_process_adapter_v1_20261022_G1/finalize/artifacts/M/select_predictions.npz",
+  "canonical_rows":"./results/experiments/d500_process_adapter_v1_20261022_G1/finalize/artifacts/M/select_rows.json",
+  "models":[
+    {
+      "id":"M","role":"current_dynamic_M0_fixed_selected_weight_not_promoted",
+      "npz":"./results/experiments/d500_process_adapter_v1_20261022_G1/finalize/artifacts/M/select_predictions.npz",
+      "npz_sha256":"18a1031921970e0b4120de867fac0231ae4a47e87eeb69df0c9107d355ae3c9c",
+      "rows":"./results/experiments/d500_process_adapter_v1_20261022_G1/finalize/artifacts/M/select_rows.json",
+      "draw_key":"draws_normalized_q95","units":"fit_q95_normalized","scenario_weights":"equal",
+      "native_joint":true,"joint_status":"MODEL_IMPLIED_JOINT_DEPENDENCE_UNVALIDATED",
+      "checkpoint":"./results/experiments/d500_process_adapter_v1_20261022_G1/finalize/artifacts/M/best.pt",
+      "checkpoint_sha256":"3cfdf9fe702db06b5cb6df4da51a805e324f6be2f3289508e3cc304bccfbc9ce",
+      "source_version":"15c27144e2be2fbb0150f213fea19f9e6daec3c1; M_p2 step5000; old NO_ELIGIBLE_CANDIDATE unchanged",
+      "expected_metrics_file":"./results/experiments/d500_process_adapter_v1_20261022_G1/finalize/artifacts/M/metrics.json"
+    },
+    {
+      "id":"D500","role":"retained_development_reference",
+      "npz":"./inputs/d500_process_adapter_v1_20261022_verified/results/experiments/b2_china_adapt_v1_20261018/formal_5722bfd_20261019/D_china_state/select_predictions.npz",
+      "npz_sha256":"240db13a546b4a8ad1914390cb35c9220f0d04d2d42ae98d08ce2753a8a8bc5d",
+      "rows":"./inputs/d500_process_adapter_v1_20261022_verified/results/experiments/b2_china_adapt_v1_20261018/formal_5722bfd_20261019/D_china_state/select_rows.json",
+      "draw_key":"draws_normalized","units":"fit_q95_normalized","scenario_weights":"equal",
+      "native_joint":true,"joint_status":"MODEL_IMPLIED_JOINT_DEPENDENCE_UNVALIDATED",
+      "checkpoint":"./inputs/d500_process_adapter_v1_20261022_verified/results/experiments/b2_china_adapt_v1_20261018/formal_5722bfd_20261019/D_china_state/best.pt",
+      "checkpoint_sha256":"bbd6f87e0ad452873f1d4b357a67cf2fbd823bb2dd3bdc36e56ab7b2d06c4a3a",
+      "source_version":"formal_5722bfd_20261019 D_china_state selected500; original writer9c1f05d",
+      "expected":{"brier":0.020971732478139306,"q95_brier":0.03084093626704419,"q99_brier":0.01110252868923442,"crps_q95":0.10693657952639694,"peak6_crps_q95":0.18437655694986488},
+      "expected_constraints_file":"./results/experiments/d500_adapter_prepare_20261022/artifacts/mc_tolerance.json"
+    },
+    {"id":"T","role":"internal_simple_temporal_adapter","npz":"./results/experiments/d500_process_adapter_v1_20261022_G1/finalize/artifacts/T/select_predictions.npz","rows":"./results/experiments/d500_process_adapter_v1_20261022_G1/finalize/artifacts/T/select_rows.json","draw_key":"draws_normalized_q95","units":"fit_q95_normalized","scenario_weights":"equal","native_joint":true,"joint_status":"MODEL_IMPLIED_JOINT_DEPENDENCE_UNVALIDATED","checkpoint":"./results/experiments/d500_process_adapter_v1_20261022_G1/finalize/artifacts/T/best.pt","source_version":"15c27144 full finalize original-selected T; internal control, not native external TCN","expected_metrics_file":"./results/experiments/d500_process_adapter_v1_20261022_G1/finalize/artifacts/T/metrics.json"},
+    {"id":"A","role":"internal_heterogeneous_temporal_adapter","npz":"./results/experiments/d500_process_adapter_v1_20261022_G1/finalize/artifacts/A/select_predictions.npz","rows":"./results/experiments/d500_process_adapter_v1_20261022_G1/finalize/artifacts/A/select_rows.json","draw_key":"draws_normalized_q95","units":"fit_q95_normalized","scenario_weights":"equal","native_joint":true,"joint_status":"MODEL_IMPLIED_JOINT_DEPENDENCE_UNVALIDATED","checkpoint":"./results/experiments/d500_process_adapter_v1_20261022_G1/finalize/artifacts/A/best.pt","source_version":"15c27144 full finalize original-selected A; internal control","expected_metrics_file":"./results/experiments/d500_process_adapter_v1_20261022_G1/finalize/artifacts/A/metrics.json"},
+    {"id":"C","role":"original_DiffPTS_C","status":"SOURCE_AVAILABLE_ON_TEACHERBOX","reason":"Use companion teacherbox configuration on verified original arrays, then merge scored small reports","native_joint":true},
+    {"id":"native_TCN","role":"strong_external_marginal_comparator","status":"SOURCE_AVAILABLE_ON_TEACHERBOX","reason":"Use companion teacherbox configuration for verified original17 quantiles and historical marginal grid","native_joint":false,"joint_status":"NOT_EVALUABLE_NO_NATIVE_JOINT_PAIRING"}
+  ],
+  "references":["D500","C","native_TCN"],
+  "plot_models":["M","D500","C","native_TCN"],
+  "read_test":false,"model_forward":false,"random_sampling":false,"cloud_sync":false
+}

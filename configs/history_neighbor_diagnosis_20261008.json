@@ -1,0 +1,18 @@
+{
+  "status": "APPROVED_READ_ONLY_DIAGNOSTIC",
+  "authorization": "2026-10-08 user: 可以，继续检查; continue the recommended no-training history-neighbor check",
+  "data_commit": "e50e3cfb1413338f876ba3475771a2116c25fe83",
+  "input": "existing China train/validation windows; history 12h P/Q only; existing train-only P95/Q95 scales",
+  "distance": "sqrt(mean of 24 squared history-coordinate differences)); P/Q equal coordinate weight",
+  "neighbor_count": 1,
+  "tie_break": "lexicographic window_id",
+  "exclude": "same station source-event group OR temporal overlap component OR intersecting complete 24h source interval",
+  "prediction": ["donor future Q", "query current Q + donor future Q - donor current Q, without clipping", "persistence"],
+  "distance_reference": "per-station leave-event-out TRAIN nearest distances; q25 and q95; window-weighted descriptive thresholds",
+  "comparison": "all 1356 China development windows, 16 source event labels, 9 stations; existing D/N seeds 2/17/42",
+  "recorded_peak_diagnostic": "also score existing eligible manifest window_id/lead pairs; preserve ineligible coverage; truth-located origins are retrospective only",
+  "timing_ties": "earliest argmax; record observed and predicted plateau fractions; persistence does not identify peak timing",
+  "future_rain": "retrospective explanation after neighbor selection only; never a predictor or selector",
+  "limits": {"wall_seconds": 1200, "address_space_bytes": 4294967296, "cpu_threads": 1},
+  "prohibited": ["test access", "training", "optimizer update", "GPU", "weights access", "development-based hyperparameter selection"]
+}

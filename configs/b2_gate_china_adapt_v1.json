@@ -1,0 +1,172 @@
+{
+  "change_id": "WP-20261018-B2-CHINA-ADAPT-V1",
+  "condition_id": "WP-20261018-B2-CHINA-ADAPT-V1-FORMAL",
+  "config_source": "configs/b2_gate_china_adapt_v1.json",
+  "state": "APPROVED_D_ONLY",
+  "phase": "phase2_fresh_gate_formal_after_independent_phase1_acceptance",
+  "groups": [
+    "D_china_state"
+  ],
+  "seed": 2,
+  "history_hours": 24,
+  "forecast_hours": 24,
+  "route": "pq",
+  "variance_floor": 1e-08,
+  "baseline_c_checkpoint": "./results/experiments/pointwise_data_mix_formal_20261018_83db4f4/artifacts/C/seed_2/model/best.pt",
+  "baseline_c_checkpoint_sha256": "e6befbbab3c52ca5b67e7d0b30854f51486bf9884ecf2b00b864071153ea14ef",
+  "diffpts_author_sha": "e9a7d1d56bd40b4bcfced29b430f6c5be6f2a424",
+  "diffpts_source_path": "./reference/supporting/code/DiffPTS/e9a7d1d56bd40b4bcfced29b430f6c5be6f2a424",
+  "baseline_c_completion": "./results/experiments/pointwise_data_mix_formal_20261018_83db4f4/artifacts/C/seed_2/model/completion.json",
+  "baseline_c_exposure": "./results/experiments/pointwise_data_mix_formal_20261018_83db4f4/artifacts/C/seed_2/data/exposure.npz",
+  "baseline_c_exposure_manifest": "./results/experiments/pointwise_data_mix_formal_20261018_83db4f4/artifacts/C/seed_2/data/exposure_manifest.json",
+  "baseline_a_checkpoint": "./results/experiments/b2_temporal_state_v1_20261018/formal/formal_3bdec5d_20261018/artifacts/fixed_segments/best.pt",
+  "baseline_a_checkpoint_sha256": "155043d2b56e108d2b13c8870be57db5dadc1fd6d3c91d219d45526f6a9b4e41",
+  "baseline_a_selected_updates": 2000,
+  "baseline_a_formal_updates": 3000,
+  "baseline_a_selection_score_128": 0.02122260879547767,
+  "baseline_a_selection_seed": 600002,
+  "baseline_a_final_score_256": 0.021088611769596522,
+  "baseline_a_final_seed": 900002,
+  "banks": {
+    "pq": "./results/experiments/pointwise_full_pack_108f9a0/artifacts/pq"
+  },
+  "expected_bank_sha256": "2957aabab9a36247168e3ee05a6cd0f4490ac2f31395b2cd53c384668d7ce81c",
+  "expected_china_select_rows": 1706,
+  "expected_china_select_stations": 9,
+  "expected_china_select_source_events": 17,
+  "expected_china_select_row_identity_sha256": "5aac1a4e22cb38b233ba6381cc747757e03d68a1b0a8256139431cba52660707",
+  "training_countries": [
+    "CN",
+    "DE",
+    "IS",
+    "US",
+    "JP"
+  ],
+  "fit_exposure_updates": 1000,
+  "batch_size": 64,
+  "smoke_epochs": 1,
+  "smoke_updates_per_group": 2,
+  "smoke_update_cap_total": 4,
+  "learning_rate": 0.001,
+  "gradient_clip_norm": 10.0,
+  "cpu_threads": 4,
+  "cache_batch_size": 32,
+  "device": "cuda:0",
+  "gate_parameters": {
+    "B_shared": 2,
+    "C_state": 30,
+    "state_width": 14,
+    "a_range": [
+      0.0,
+      2.0
+    ],
+    "tau_hours_range": [
+      1.0,
+      24.0
+    ],
+    "initial_a": 1.0,
+    "initial_tau_hours": 6.0,
+    "z_std_floor": 1e-06,
+    "initial_u_a": 0.0,
+    "initial_u_tau": -1.2809338454620642
+  },
+  "paired_exposure": {
+    "key": "accepted_bank_indices",
+    "source_shape": [
+      1,
+      3000,
+      64
+    ],
+    "smoke_slice": [
+      0,
+      2,
+      0,
+      64
+    ],
+    "noise_seed_rule": "seed + epoch * updates_per_epoch + step",
+    "identical_for_groups": true
+  },
+  "select_draws_probe": 128,
+  "select_draws_seed": 600002,
+  "final_draws_probe": 256,
+  "final_draws_seed": 900002,
+  "fixed_probe_policy": {
+    "maximum_origins": 24,
+    "threshold": "canonical Q95 observed flag",
+    "ordinary": "no Q95-positive hour in the 24-lead window",
+    "sustained": "at least six consecutive Q95-positive leads",
+    "onset": "first Q95-positive lead is 1..6 and no run reaches six leads",
+    "other_pattern": "excluded from the three primary probe strata; support is counted",
+    "per_stratum_target": 8,
+    "diversity_order": "round-robin station/event groups; then origin_time and sample_id",
+    "required_report_case_ids": "include the accepted bank manifest report cases when they fit the 24-origin cap",
+    "selection_uses_model_outputs": false
+  },
+  "cache": {
+    "fit_role": "unique rows from accepted C exposure indices [0:1000, :64], sorted global fit index",
+    "select_role": "complete CN select view, source bank order",
+    "fields": [
+      "mu0",
+      "g0",
+      "gs",
+      "z_raw",
+      "z_normalized"
+    ],
+    "dtype": "float32 for model outputs; float64 for fit-only z statistics",
+    "z_normalization": "fit-only mean and population standard deviation; denominator max(std,1e-6)",
+    "x_y_storage": "read-only references to accepted bank; cache stores source role, sample_id, global index and source checksums",
+    "denoiser_outputs_cached": false,
+    "inverse_mixed_variance_used_to_recover_gs": false
+  },
+  "gpu_budget_total_seconds": 180.0,
+  "gpu_lock": "./artifacts/pointwise_gpu0.lock",
+  "budget_receipt": "./results/experiments/b2_china_adapt_v1_20261018/budget_receipt.json",
+  "output_root": "./results/experiments/b2_china_adapt_v1_20261018",
+  "training_monitor_source": "./external-home/sciencelab/versions/training-monitor-v4-20261015/src",
+  "training_collector_env": "./external-home/personal-os-monitor/collector.env",
+  "monitor_mode": "disabled_no_external_sender",
+  "training_report": "training_report_v1 learning/prediction/risk pages; numerical health/interventions nonempty",
+  "scientific_status": "single_seed_select_exploration_no_external_fair_superiority",
+  "formal_updates_per_group": 1000,
+  "formal_attempt_cap_total": 1000,
+  "candidate_updates": [
+    0,
+    500,
+    1000
+  ],
+  "health_updates": [
+    0,
+    250,
+    500,
+    1000
+  ],
+  "evaluation_batch_size": 32,
+  "select_draws": 128,
+  "final_draws": 256,
+  "selection_seed": 600002,
+  "final_seed": 900002,
+  "formal_initialization": "fresh original C+A; never phase1 smoke checkpoints",
+  "formal_budget": "new cumulative180s including CPU preflight and failures; engineering160s parent20s; never reset",
+  "accepted_cache_receipt": "./results/experiments/b2_gate_adapt_v1_20261018/phase1_782cb1c_resume_20261018/cache_receipt.json",
+  "acceptance_receipt_schema": {
+    "state": "accepted_for_formal",
+    "required_fields": [
+      "change_id",
+      "state",
+      "phase1_artifacts",
+      "cache_receipt_sha256",
+      "phase1_completion_sha256",
+      "phase1_source_commit",
+      "budget_receipt_sha256",
+      "parent_audit_compute_seconds",
+      "phase1_unaccounted_wrapper_seconds"
+    ]
+  },
+  "monitor_run_id": "change-group-seed2-formal-unique_output_parent",
+  "primary_score": "original China station/source-event/origin equal, full24h Q95/Q99 Brier",
+  "prediction_protocol": "source China row order, batch32, seed+first_index (600002 selection;900002 final)",
+  "selected0": "reuse original A256 predictions/conditions with exact hashes; no retained gate improvement",
+  "phase_score_definition": "Exact accepted audit239af24 phases/summarize: canonical station+source event unique hourly timeline, gap blocks, first3 known-entry hours and complete>6h run middle excluding first/last3; subset hierarchy weights per lead; matching threshold channel",
+  "baseline_c_final_score_256": 0.021693367399576936,
+  "phase1_unaccounted_wrapper_seconds_definition": "nonnegative difference: sum of all phase1-related run_record wall times minus phase1 budget cumulative compute seconds; supplied by independent accepted receipt, separate from parent audit"
+}

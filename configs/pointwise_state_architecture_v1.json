@@ -1,0 +1,30 @@
+{
+  "change_id": "WP-20261016-POINTWISE-STATE-CONDITION-V1",
+  "state": "implementation_pending_server_checks",
+  "history_hours": 24,
+  "forecast_hours": 24,
+  "groups": ["state_q", "state_pq", "extreme_resampling"],
+  "baseline": "stage1 floor DiffPTS pq; reuse successful result, never retrain here",
+  "state_features": {
+    "Q": ["current", "mean_3h", "std_3h_population", "current_minus_first_3h", "mean_6h", "std_6h_population", "current_minus_first_6h", "mean_12h", "std_12h_population", "current_minus_first_12h", "mean_24h", "std_24h_population", "current_minus_first_24h"],
+    "P": ["current", "sum_3h", "sum_6h", "sum_12h", "sum_24h", "current_minus_first_3h"],
+    "transform": "sign(v)*log1p(abs(v)) applied to each feature; bank input units retained; Q fixed-fit-Q95 normalized and P inherited-fit-P-scale normalized; no newly fitted feature scaling",
+    "state_q": "all six P slots zero; original mean backbone still receives identical historical P/Q",
+    "future_values_or_identity_features": false
+  },
+  "encoder": [19, 32, 32],
+  "activation": "SiLU",
+  "heads": {"mean_residual": [32, 24], "inverse_softplus_variance_residual": [32, 24], "denoiser_first_hidden_residual": [32, 128]},
+  "zero_initialization": "all three output heads weight/bias zero; baseline constructed first at same seed",
+  "variance": "a=g+log(-expm1(-g)); g_new=softplus(a+residual).clamp_min(1e-8); same resulting g enters NLL/noise/sampling; zero residual recovers original within floating tolerance without blocking head gradients",
+  "denoiser": "residual broadcast over future hours, added after author's lin1 timestep multiplication and before original softplus; no future-time convolution",
+  "added_parameters_each_state_group": 7504,
+  "loss": "unchanged stage1 author joint GaussianNLL + denoise noise MSE",
+  "resampling": "preserve country/canonical station at every original exposure position; within station allocate half exposures per future-fit-Q95 ever-exceed class if both exist (odd remainder randomized), then event/segment uniformly, then origin uniformly; one class fallback explicit",
+  "seed": 2,
+  "epochs": 50,
+  "updates_per_epoch": 200,
+  "batch_size": 64,
+  "formal_updates_max": 30000,
+  "smoke_updates_per_model_max": 2
+}

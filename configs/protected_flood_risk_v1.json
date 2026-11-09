@@ -1,0 +1,82 @@
+{
+  "change_id": "WP-20261010-PROTECTED-RISK-V1",
+  "training_authorized": true,
+  "seed": 2,
+  "arms": [
+    "Risk-A",
+    "Risk-B",
+    "Risk-C",
+    "Risk-D"
+  ],
+  "history_shape": [
+    12,
+    2
+  ],
+  "features": 8,
+  "static_features": 2,
+  "hidden": 64,
+  "tcn_channels": 32,
+  "kernel": 3,
+  "dilations": [
+    1,
+    2,
+    4
+  ],
+  "dropout": 0,
+  "intervals": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      3,
+      6
+    ]
+  ],
+  "threshold": 1,
+  "protected_source_commit": "48d2929b483476021c435286651f369899d34cd4",
+  "protected_checkpoint_sha256": "0908370cc4f1ed487495e3f49fa3bd881e5a1cf3b9156c45eff141a6b6896d58",
+  "tracking_uri": null,
+  "real_experiment_state": "APPROVED",
+  "integration": {
+    "health_every_steps": 50,
+    "diagnostic_every_epochs": 10,
+    "selection": "China select at-risk H6 raw Brier, earlier tie",
+    "real_run_gate": "APPROVED revision1.1; --train enabled, formal launch only after parent smoke acceptance",
+    "shared_sampling": "at-risk fit: country then station then window",
+    "max_updates": 3600,
+    "nonfinite_policy": "stop and preserve failure record/checkpoint",
+    "tracking": "arm metric namespace in synchronous optional sink; no true MLflow stage",
+    "alarm_lines": "China calibration negatives, raw probabilities, strict > threshold, 5 percent limit; dev once after all candidates stop"
+  },
+  "spec_revision": "1.1",
+  "spec_commit": "49e5d849aad30ef8b457c5c8fae4108b8f63722d",
+  "time_limits": null,
+  "data": "._prob_flood_ab720ba/results/experiments/prob_flood_prepare_ab720ba_20261010/artifacts/data",
+  "data_manifest_sha256": "e482500d17c6cd900b985c67ff3c6a274b43a892d5f779316032cdf3bfb0ecb6",
+  "source": "._prob_flood_48d2929",
+  "protected_checkpoint": "._prob_flood_48d2929/results/experiments/prob_flood_formal_48d2929_20261010/artifacts/seed_2/P0/best.pt",
+  "attribute_rows": "./external-home/protected_risk_v1_inputs_20261010/attribute_rows.json",
+  "normalization": "./external-home/protected_risk_v1_inputs_20261010/normalization.json",
+  "epochs": 100,
+  "max_updates": 3600,
+  "batch_size": 128,
+  "learning_rate": 0.001,
+  "gradient_clip": 10.0,
+  "epoch_size_rule": "ceil(at-risk fit windows / batch_size)*batch_size; each epoch is balanced sampling with replacement, not a traversal",
+  "smoke": {
+    "epochs": 2,
+    "max_updates": 4,
+    "epoch_size": 256,
+    "health_every_steps": 1,
+    "diagnostic_every_epochs": 1
+  },
+  "launch_lock": "./external-home/protected_risk_v1_launch.lock",
+  "gpu_lock": "./external-home/prob_flood_v1_gpu0.lock",
+  "attribute_rows_sha256": "cf044765fffe91c72e7f5d6c48e03616fb3bf050f0339153f39e809065fb85b8",
+  "normalization_sha256": "dde4f407d31457b8347d46b360507587bae1aa0e8beb56b7427e30c3146d9c4c"
+}

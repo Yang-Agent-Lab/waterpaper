@@ -1,0 +1,57 @@
+{
+  "change_id": "WP-20261016-POINTWISE-STATE-CONDITION-V1",
+  "state": "execution_complete_pending_independent_result_review",
+  "source_commit": "150f5371fbed9bb9a7f17f2bfa93c6e16cdad159",
+  "run_root": "./results/experiments/state_formal_150f537",
+  "run_record": "run_record.json",
+  "completion": "artifacts/completion.json",
+  "environment_python": "./environments/pointwise_benchmark_v1/bin/python",
+  "started_utc": "2026-10-15T17:14:18.639757+00:00",
+  "finished_utc": "2026-10-15T17:23:25.613850+00:00",
+  "exit_code": 0,
+  "model_pid": 698280,
+  "host": "zxy",
+  "runtime_process_start_ticks": "744364874",
+  "resource_lock": "./artifacts/pointwise_gpu0.lock",
+  "resource_check": "stage1 lock released after its run_record completion 17:14:18.592945 UTC; lock-protected nvidia-smi compute-PID query empty immediately before this run_versioned invocation; subsequent sole compute PID698280",
+  "bank_identity": "2957aabab9a36247168e3ee05a6cd0f4490ac2f31395b2cd53c384668d7ce81c",
+  "baseline_retrained": false,
+  "total_training_updates": 30000,
+  "groups": [
+    {
+      "id": "state_q_pq", "epochs": 50, "updates": 10000,
+      "training_ended": true, "selection_ended": true, "final_scoring_ended": true,
+      "final_256_draw_china_brier": 0.02214494784775535,
+      "elapsed_seconds": 185.65869235619903,
+      "selected_epoch": 12, "selected_updates": 2400,
+      "selection_128_draw_brier": 0.02230089373312057,
+      "checkpoint_sha256": "8e6f0b033049ecdaf85d585079f2f54d8a76e7980f2cb08c7fde56ae2c2b23fe",
+      "report_pages": 3
+    },
+    {
+      "id": "state_pq_pq", "epochs": 50, "updates": 10000,
+      "training_ended": true, "selection_ended": true, "final_scoring_ended": true,
+      "final_256_draw_china_brier": 0.021690854533030508,
+      "elapsed_seconds": 183.86284339707345,
+      "selected_epoch": 3, "selected_updates": 600,
+      "selection_128_draw_brier": 0.0218379221764267,
+      "checkpoint_sha256": "848e0deece47a422cc898ad53dbfa0a25ae594f44c8277d9c33215868f7afc94",
+      "report_pages": 3
+    },
+    {
+      "id": "extreme_resampling_pq", "epochs": 50, "updates": 10000,
+      "training_ended": true, "selection_ended": true, "final_scoring_ended": true,
+      "final_256_draw_china_brier": 0.02242725980783793,
+      "elapsed_seconds": 166.56486839521676,
+      "selected_epoch": 5, "selected_updates": 1000,
+      "selection_128_draw_brier": 0.022527612368544874,
+      "checkpoint_sha256": "4022fbd7c51fde7c93fd22707f6b40cf3bcd521e6740500b71cd0afe5d352332",
+      "report_pages": 3
+    }
+  ],
+  "metric_definition": "China station then inherited-event equal; mean of 24 hourly Q95 and Q99 Brier scores; dimensionless, lower is better",
+  "prediction_evidence": "artifacts/<id>/select_predictions.npz retains raw_draws_normalized, projected draws, hourly probability, truth and scores; select_rows.json preserves identities",
+  "independent_review": "pending; execution completion does not establish performance benefit",
+  "additional_training_or_diagnostics": false,
+  "visual_review": "server figure manifests each contain 3 pages; implementation agent did not perform native Preview visual review"
+}

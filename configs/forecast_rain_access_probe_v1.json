@@ -1,0 +1,26 @@
+{
+  "change_id": "WP-20261011-FORECAST-RAIN-ACCESS-PROBE-V1",
+  "mode": "one_async_access_request_no_download",
+  "url": "https://ecds.ecmwf.int/api",
+  "dataset": "tigge-forecasts",
+  "request": {
+    "class": "ti",
+    "date": "2010-07-18/2010-07-23",
+    "expver": "prod",
+    "origin": "kwbc",
+    "type": "cf",
+    "levtype": "sfc",
+    "param": "228228",
+    "time": "00:00:00",
+    "step": "6/12/18/24",
+    "grid": "0.5/0.5",
+    "area": "35/110/32/114"
+  },
+  "scope": "Henan regional SAMPLE only; not basin extraction or validated as-issued inputs",
+  "max_submissions": 1,
+  "max_status_reads": 1,
+  "download": false,
+  "timeout_seconds": 20,
+  "official_migration_guide": "https://confluence.ecmwf.int/spaces/DAC/pages/462894687/User+guide+for+migration+of+S2S+and+TIGGE+to+ECDS",
+  "official_dataset_page": "https://ecds.ecmwf.int/datasets/tigge-forecasts"
+}

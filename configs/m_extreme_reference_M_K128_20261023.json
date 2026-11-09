@@ -1,0 +1,18 @@
+{
+  "constraints": {
+    "brier": 0.0208018007253703,
+    "q99_brier": 0.011110766377053993,
+    "crps_q95": 0.10051716731705249,
+    "q95_entry_first3_brier": 0.8369625088525199,
+    "q99_entry_first3_brier": 0.8877686677155671
+  },
+  "source_checkpoint_sha256": "3cfdf9fe702db06b5cb6df4da51a805e324f6be2f3289508e3cc304bccfbc9ce",
+  "source_update": 5000,
+  "source_architecture": "M_p2",
+  "source_commit": "15c27144e2be2fbb0150f213fea19f9e6daec3c1",
+  "seed": 600002,
+  "origins": 1706,
+  "scenarios": 128,
+  "source": "existing M_p2 validation_history step5000, same evaluate protocol; no new sampling"
+}
+

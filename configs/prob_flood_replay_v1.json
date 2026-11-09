@@ -1,0 +1,21 @@
+{
+  "change_id": "WP-20261010-PEAK-REPLAY-V1",
+  "model_commit": "48d2929b483476021c435286651f369899d34cd4",
+  "source": "._prob_flood_48d2929/results/experiments/prob_flood_formal_48d2929_20261010/artifacts",
+  "data": "._prob_flood_ab720ba/results/experiments/prob_flood_prepare_ab720ba_20261010/artifacts/data",
+  "data_manifest_sha256": "e482500d17c6cd900b985c67ff3c6a274b43a892d5f779316032cdf3bfb0ecb6",
+  "samples": 512,
+  "batch_size": 32,
+  "inference_seeds": {"fit": 700002, "development": 600002},
+  "cpu_budget_seconds": 1200,
+  "ledger": "./external-home/prob_flood_replay_v1_cpu_budget_20261010.json",
+  "smoke_windows_per_role": 8,
+  "checkpoint_hashes": {
+    "P0-best": "0908370cc4f1ed487495e3f49fa3bd881e5a1cf3b9156c45eff141a6b6896d58",
+    "P0-last": "119c9b0d31a0c289fe964523f2bae4afbcbeecefc7af75567926c53049a4f97f",
+    "P5-best": "25b9db351a397dff99a9a2e8527a7ff29f08c57498ddd05d0fc4a328c1a622ee",
+    "P5-last": "037270aaadf034a1f7fe8e7dee9a30066396201a471e4caee996840b97958a50"
+  },
+  "expected_windows": {"fit": 4554, "development": 1356},
+  "states": [["P0", "best", 28], ["P0", "last", 100], ["P5", "best", 57], ["P5", "last", 100]]
+}

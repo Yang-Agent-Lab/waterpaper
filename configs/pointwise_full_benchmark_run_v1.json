@@ -1,0 +1,41 @@
+{
+  "state": "APPROVED_FORMAL",
+  "condition_id": "WP-20261015-POINTWISE-FULL-BENCHMARK-V1",
+  "seed": 2,
+  "history_hours": 24,
+  "forecast_hours": 24,
+  "training_countries": ["CN", "DE", "IS", "US", "JP"],
+  "models": {"pq": ["diffpts", "nbeatsx", "lstm", "tcn", "tft"], "q_only": ["diffpts", "nbeatsx", "lstm", "tcn", "tft", "ppm"]},
+  "epochs": 50,
+  "updates_per_epoch": 200,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "optimizer": "torch.optim.Adam; default betas=(0.9,0.999), eps=1e-8, weight_decay=0",
+  "gradient_clip_norm": 10.0,
+  "select_draws": 128,
+  "final_draws": 256,
+  "evaluation_batch_size": 32,
+  "fit_probe_samples": 256,
+  "cpu_threads": 4,
+  "device": "cuda:0",
+  "banks": {
+    "pq": "./results/experiments/pointwise_full_pack_108f9a0/artifacts/pq",
+    "q_only": "./results/experiments/pointwise_full_pack_108f9a0/artifacts/q_only"
+  },
+  "exposures": {
+    "pq": "./results/experiments/pointwise_full_pack_108f9a0/artifacts/pq/exposure.npz",
+    "q_only": "./results/experiments/pointwise_full_pack_108f9a0/artifacts/q_only/exposure.npz"
+  },
+  "train_update_cap_per_configuration": 10000,
+  "train_update_cap_total": 110000,
+  "fit_exposures_per_configuration": 640000,
+  "selection_rule": "China station then inherited event equal; mean hourly Q95/Q99 Brier; earliest minimum",
+  "diffpts_variant": "author iTransformer mean option with Q readout; Q-only sigma and denoiser; not default PatchTST",
+  "diffpts_steps": 20,
+  "probability_semantics": "future hourly state, including still/again high if currently high; not first onset; no temporal cummax",
+  "physical_projection": "preserve raw outputs; uniformly clip Q at zero for scoring only",
+  "persistence_reference": "current normalized Q + route-shared fit-exposure weighted empirical residual marginal distribution; no optimization",
+  "independent_calibration_performed": false,
+  "scientific_state": "single_seed_exploratory_development_comparison",
+  "smoke_weights_reused": false
+}

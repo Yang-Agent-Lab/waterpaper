@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "status": "INPUT_SPEC_CONFIRMED_METADATA_READY",
+  "preparation_receipt": "results/experiments/basin_attribute_inputs_receipt_20261006",
+  "acceptance": "data/catalog/basin_attribute_inputs_acceptance_20261006.json",
+  "decision_date": "2026-10-06",
+  "user_decision": "Use retrospective long-term background: catchment area plus long-term precipitation, with different reference periods explicitly disclosed.",
+  "evaluation_scope": "retrospective_event_prediction_with_published_climatological_context",
+  "historical_as_of_covariates": false,
+  "countries": ["China", "Germany", "Iceland"],
+  "static_feature_order": ["area_km2", "mean_annual_precip_mm_equiv"],
+  "static_tensor_shape": ["B", 2],
+  "transformation": {
+    "elementwise": "log1p",
+    "standardization": "mean_and_population_std_over_unique_stations_with_saved_training_windows",
+    "fit_rule": "model_manifest.stations[].counts.train > 0",
+    "window_count_weighting": false,
+    "constant_feature_policy": "report_and_stop_no_epsilon",
+    "missing_core_feature_policy": "report_partial_no_silent_imputation"
+  },
+  "source_mapping": {
+    "China": {
+      "area": "Tang et al. Table 1 Basin area (km2)",
+      "precipitation": "Table 1 Annual mean precipitation (mm)",
+      "annualization_factor": 1.0,
+      "reference_period": "unknown",
+      "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025EF006060"
+    },
+    "Germany": {
+      "area": "CAMELS_DE_1h_topographic_attributes.area (MERIT Hydro km2)",
+      "area_metadata_role": "preserve_as_alternative_not_model_input",
+      "precipitation": "CAMELS_DE_1h_climatic_attributes.p_mean (mm/hr)",
+      "annualization_factor": 8766.0,
+      "reference_period": "2001-01-01/2024-12-31",
+      "source_url": "https://doi.org/10.5880/fidgeo.2026.045"
+    },
+    "Iceland": {
+      "area": "A_basins_total_upstrm.Catchment_attributes.area_calc (km2)",
+      "precipitation": "p_mean_ERA5L (mm/day)",
+      "product": "ERA5-Land",
+      "alternative_product_role": "p_mean RAV-II retained separately, not substituted",
+      "annualization_factor": 365.25,
+      "reference_period": "1989-10-01/2009-09-30",
+      "source_url": "https://essd.copernicus.org/articles/16/2741/2024/#section5"
+    }
+  },
+  "dynamic_input": {
+    "history_hours": 12,
+    "fast_hours": 6,
+    "fast_features": ["P", "Q", "delta_Q"],
+    "background_blocks": 4,
+    "hours_per_block": 3,
+    "background_features": ["block_P_sum", "block_Q_mean", "block_Q_last", "block_Q_last_minus_first"],
+    "future_measured_rainfall_input": false,
+    "prediction_hours": 12,
+    "output_definition": "Q_now + train_Q_scale * independently_predicted_change_at_each_lead"
+  },
+  "not_in_first_static_tensor": [
+    "river_length_without_common_definition",
+    "China_climate_zone_labels_internally_inconsistent_for_Jinping",
+    "elevation_slope_soil_landcover_without_verified_China_catchment_matching",
+    "station_id_or_country_embedding",
+    "full_period_Q_statistics"
+  ],
+  "limitations": [
+    "Different precipitation reference periods remain after unit conversion.",
+    "German climatology includes years used as validation/test in the time-series split.",
+    "Chinese climate reference period is unknown.",
+    "These are published background attributes, not operationally available historical forecasts.",
+    "This two-feature first version does not establish that terrain or soil attributes are complete.",
+    "No new model training or held-out target evaluation is authorized by this metadata configuration."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "change_id": "WP-20261009-N-PROBE-MIN-V1",
+  "revision": "1.1",
+  "manifest": "./external-home/pooled_esdf_d781a3f_v2/results/experiments/esdf_projection_full_d781a3f_20261005/artifacts/model_manifest.json",
+  "n_root": "./external-home/vega_material_formal_candidate_20261007/results/experiments/material_route_formal_28ea910_20261007/artifacts/seed_2/N",
+  "data_commit": "e50e3cfb1413338f876ba3475771a2116c25fe83",
+  "split_seed": 20261009,
+  "calibration_fraction": 0.2,
+  "positive_rise_quantile": 0.9,
+  "false_positive_limit": 0.05,
+  "budget_seconds": 3600,
+  "smoke_fit_per_component": 16,
+  "logistic": {"C": 1, "penalty": "l2", "solver": "lbfgs", "max_iter": 2000, "tol": 1e-6},
+  "ridge": {"alpha": 1},
+  "source_case_audit": "Parent-coordinated independent audit of fixed Liqingdian train windows 70d8daf4e05244db3a4c0d580340d3293a88c800d14416a7ab5b2ec9f1e3f720 and f5aa7ae2d1af68c01715b6f58931746b12af99c62b77d55ef0ae49feb8da04d9; not six-hour failure evidence."
+}

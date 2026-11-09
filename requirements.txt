@@ -1,0 +1,9 @@
+# Basic scientific stack. Known historical numerical versions are retained.
+# This is a dependency declaration, not a complete environment lockfile.
+numpy==2.2.6
+scipy==1.15.3
+pandas==2.2.3
+torch==2.7.1
+matplotlib
+h5py
+Pillow

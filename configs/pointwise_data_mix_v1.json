@@ -1,0 +1,39 @@
+{
+  "state": "APPROVED_FORMAL",
+  "change_id": "WP-20261018-POINTWISE-DATA-MIX-V1",
+  "bank_identity": "2957aabab9a36247168e3ee05a6cd0f4490ac2f31395b2cd53c384668d7ce81c",
+  "bank_path": "./results/experiments/pointwise_full_pack_108f9a0/artifacts/pq",
+  "history_hours": 24,
+  "forecast_hours": 24,
+  "seeds": [2, 13, 42],
+  "groups": {
+    "A": {"CN": null},
+    "B": {"CN": null, "DE": 30},
+    "C": {"CN": null, "DE": 30, "IS": 20, "US": 20, "JP": 1}
+  },
+  "country_weights": {
+    "A": {"CN": 1.0},
+    "B": {"CN": 0.5, "DE": 0.5},
+    "C": {"CN": 0.5, "DE": 0.2, "IS": 0.1, "US": 0.15, "JP": 0.05}
+  },
+  "epochs": 3,
+  "updates_per_epoch": 1000,
+  "candidate_checkpoint_updates": [1000, 2000, 3000],
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "optimizer": "torch.optim.Adam",
+  "gradient_clip_norm": 10.0,
+  "variance_floor": 1e-8,
+  "select_draws": 128,
+  "final_draws": 256,
+  "evaluation_batch_size": 32,
+  "fit_probe_samples": 256,
+  "cpu_threads": 4,
+  "device": "cuda:0",
+  "selection_rule": "China select station-event-origin equal mean Brier across 24 leads and Q95/Q99; earliest minimum",
+  "test_calibration_reserved_read": false,
+  "future_precipitation_input": false,
+  "state_or_risk_head": false,
+  "external_comparator_training": false,
+  "scientific_state": "three-seed pointwise development data-mix comparison; not external-comparator superiority"
+}

@@ -1,0 +1,1 @@
+{"experiment_id":"WP-20261023-M-DISTRIBUTION-METRICS-V1","revision":"1.1","execution_spec":"configs/m_distribution_metrics_point_peaks_r1_1_20261023.md","input_config":"configs/m_distribution_metrics_20261023.json","windows":[1,3,6,12,24],"comparison_references":["D500","C","native_TCN","T","A"],"scope":"POINT_CURVE_PEAK_ONLY; do not rescore distribution metrics or redraw"}

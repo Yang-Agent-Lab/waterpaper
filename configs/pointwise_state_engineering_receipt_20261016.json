@@ -1,0 +1,51 @@
+{
+  "state": "engineering_smoke_complete_pending_independent_review",
+  "change_id": "WP-20261016-POINTWISE-STATE-CONDITION-V1",
+  "implementation_commits": ["64d9491", "9de69f5", "9897967", "df50f4e", "9b366b8"],
+  "dependency_commit": "208efef",
+  "server_root": ".",
+  "environment_python": "./environments/pointwise_benchmark_v1/bin/python",
+  "cpu_tests": {
+    "run": "results/experiments/state_tests_208efef",
+    "actual_commit": "208efef6743ac544ae6da9c18200bca72f981811",
+    "exit_code": 0,
+    "result": "4 passed, 5 original-author tensor-copy warnings in 1.82s",
+    "covered": ["historical 24h-only state and six zero rain slots", "equal network dimensions and exact 7504 extra parameters", "original backbone tensor identity at same seed", "zero residual sample/loss equivalence within documented floating tolerance", "two synthetic updates and finite gradients", "checkpoint save/restore and repeated sample identity", "history P changes only state_pq state, original mean retains P/Q", "stable inverse-softplus roundtrip and head gradients", "resampling station-position preservation, class balance and single-class fallback"]
+  },
+  "fixed_formal_sampling": {
+    "run": "results/experiments/state_extreme_exposure_9897967",
+    "actual_commit": "208efef6743ac544ae6da9c18200bca72f981811",
+    "exit_code": 0,
+    "shape": [50, 200, 64],
+    "bank_identity": "2957aabab9a36247168e3ee05a6cd0f4490ac2f31395b2cd53c384668d7ce81c",
+    "exposure_sha256": "0e49eecb6e856139f18c750904c307956d63611e4f289d39fd86b3c4a016b998",
+    "country_canonical_station_unchanged_each_position": true,
+    "exposed_canonical_stations": 1737,
+    "original_positive": 117111,
+    "original_negative": 522889,
+    "resampled_positive": 317850,
+    "resampled_negative": 322150,
+    "classification": "future fit Q ever exceeds inherited Q95, used only to assign training exposure classes",
+    "overall_balance_limit": "station exposure counts unchanged; stations with only one available class keep that class; odd per-station counts have one randomized remainder"
+  },
+  "real_engineering_smoke": {
+    "run": "results/experiments/state_smoke_9b366b8",
+    "actual_commit": "9b366b877177339b410c5fb21780e29cef6f58c7",
+    "started_utc": "2026-10-15T16:49:41.552275+00:00",
+    "finished_utc": "2026-10-15T16:50:09.477111+00:00",
+    "exit_code": 0,
+    "gpu_lock": "./artifacts/pointwise_gpu0.lock",
+    "source": "original accepted full pq bank; original exposure prefix [:1,:2,:4]; no new bank",
+    "exposure_manifest": "results/experiments/state_smoke_exposure_v1/artifacts/manifest.json",
+    "original_sample_ids_saved": 8,
+    "resampled_sample_ids_saved": 8,
+    "groups": [
+      {"name": "state_q", "updates": 2, "exposures": 8, "parameters": 4569154, "training_ended": true, "selection_ended": true, "final_scoring_ended": true, "report_pages": 3},
+      {"name": "state_pq", "updates": 2, "exposures": 8, "parameters": 4569154, "training_ended": true, "selection_ended": true, "final_scoring_ended": true, "report_pages": 3},
+      {"name": "extreme_resampling", "updates": 2, "exposures": 8, "parameters": 4561650, "training_ended": true, "selection_ended": true, "final_scoring_ended": true, "report_pages": 3}
+    ],
+    "scientific_interpretation": "engineering only; not performance evidence; no formal weights reused"
+  },
+  "formal_state": "not_started; pending independent review and successful full stage1 pq baseline",
+  "figures": "server reports exist; native Preview visual review not performed by implementation agent"
+}

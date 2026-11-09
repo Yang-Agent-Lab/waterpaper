@@ -1,0 +1,10 @@
+-r requirements.txt
+# Versions recorded by the original benchmark environment setup.
+neuralforecast==3.1.0
+pytorch-lightning==2.5.5
+einops==0.8.1
+tqdm==4.66.5
+PyYAML==6.0.2
+fire==0.7.1
+torch-timeseries==0.2.5
+coral-pytorch

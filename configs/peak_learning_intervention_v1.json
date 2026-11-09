@@ -1,0 +1,59 @@
+{
+  "change_id": "WP-20261010-PEAK-LEARNING-4ARM-V1",
+  "data": "._prob_flood_ab720ba/results/experiments/prob_flood_prepare_ab720ba_20261010/artifacts/data",
+  "data_manifest_sha256": "e482500d17c6cd900b985c67ff3c6a274b43a892d5f779316032cdf3bfb0ecb6",
+  "source": "._prob_flood_48d2929/results/experiments/prob_flood_formal_48d2929_20261010/artifacts",
+  "replay": "._peak_replay_e95304a/results/experiments/peak_replay_full_e95304a_20261010/artifacts",
+  "initial_weight_sha256": "119c9b0d31a0c289fe964523f2bae4afbcbeecefc7af75567926c53049a4f97f",
+  "arms": {
+    "A": {
+      "loss": "L1",
+      "modules": [
+        "point"
+      ]
+    },
+    "B": {
+      "loss": "MSE",
+      "modules": [
+        "point"
+      ]
+    },
+    "C": {
+      "loss": "L1",
+      "modules": [
+        "history",
+        "context",
+        "point"
+      ]
+    },
+    "D": {
+      "loss": "MSE",
+      "modules": [
+        "history",
+        "context",
+        "point"
+      ]
+    }
+  },
+  "epochs": 100,
+  "batch_size": 128,
+  "learning_rate": 0.001,
+  "gradient_clip": 10.0,
+  "save_epochs": [
+    0,
+    25,
+    50,
+    75,
+    100
+  ],
+  "ledger": "./external-home/peak_learning_intervention_v1_budget_20261010.json",
+  "total_gpu_seconds": 600,
+  "per_arm_gpu_seconds": 120,
+  "cpu_aux_seconds": 1200,
+  "prior_external_cpu_seconds": 0.002973,
+  "smoke_updates": 3,
+  "smoke_windows": 16,
+  "inference_batch_size": 256,
+  "spec_revision": "1.1",
+  "ordinary_definition": "true_peak6<=1; 5 percent cost assessed on process6_MAE, separately from recession"
+}

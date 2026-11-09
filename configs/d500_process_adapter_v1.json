@@ -1,0 +1,19 @@
+{
+ "implementation_state":"IMPLEMENTATION_AUTHORIZED_FORMAL_REQUIRES_INDEPENDENT_PASS",
+ "source_design":"configs/amifound_d500_second_innovation_v1_20261022.md",
+ "seed":2,"groups":["T","M","A"],"adapter_width":64,"adapter_blocks":2,
+ "checkpoint":"./inputs/d500_process_adapter_v1_20261022_verified/results/experiments/b2_china_adapt_v1_20261018/formal_5722bfd_20261019/D_china_state/best.pt",
+ "checkpoint_sha256":"bbd6f87e0ad452873f1d4b357a67cf2fbd823bb2dd3bdc36e56ab7b2d06c4a3a",
+ "author_source":"./inputs/d500_process_adapter_v1_20261022_verified/reference/supporting/code/DiffPTS/e9a7d1d56bd40b4bcfced29b430f6c5be6f2a424",
+ "data_root":"./data/processed/eventflow_diffrl_v2_C_20261021_gzip",
+ "device":"cuda:0","cpu_threads":4,"g0_batch":2,"g0_updates_per_group":2,
+ "g0_lr":0.001,"g0_lambda_c":0.1,"g0_lambda_e":0.1,"balance_weight":0.01,
+ "training_recorder_source":"./runtime/sciencelab/src",
+ "g0_scope":"real finite entry smoke only; forced distribution weights are path coverage, not a selected hyperparameter trial",
+ "prior_engineering_updates":3,"formal_updates":6000,"formal_batch":32,"formal_validation_interval":1000,
+ "formal_presets":{"p1":{"lr":0.0003,"lambda_c":0.03,"lambda_e":0.03},"p2":{"lr":0.0003,"lambda_c":0.1,"lambda_e":0.1},"p3":{"lr":0.0001,"lambda_c":0.1,"lambda_e":0.1}},
+ "formal_schedule":{"warmup_last_update":200,"full_distribution_update":1000,"distribution_every":4,"aux_origins":8,"aux_draws":8,"balance_warmup":0,"balance_after_warmup":0.01},
+ "formal_weight_decay":0.0001,"gradient_clip":1,"patience":3,"patience_count_from_update":3000,
+ "selection_seed":600002,"final_seed":900002,"selection_draws":128,"final_draws":256,"evaluation_chunk":32,
+ "warning_config":"./configs/rl_warning_s0_v1.json","warning_selected_rules":"./inputs/d500_process_adapter_rules_20261022/results/experiments/rl_warning_s0_v1_20261019/revision_2/selected_rules.json","historical_baseline_manifest":"./configs/eventflow_diffrl_v2_baselines.json","formal_trials":9
+}

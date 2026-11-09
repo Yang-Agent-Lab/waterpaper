@@ -14,7 +14,7 @@ from .paths import checked_output
 def main():
     p=argparse.ArgumentParser();p.add_argument('--data',required=True);p.add_argument('--artifacts',required=True);p.add_argument('--out',required=True)
     args=p.parse_args();folder,_,host=checked_output(args.out)
-    if host!='teacher':raise ValueError('r1.4 assigns reference to teacherbox')
+    if host!='configured-compute':raise ValueError('reference requires the public checkout compute role')
     folder.mkdir(parents=True,exist_ok=False)
     bank=Bank(args.data);device=torch.device('cuda:0'); model=load_b_model(args.artifacts,device).eval()
     masks,thresholds,support=evaluation_top_masks(bank.select_rows,bank.arrays['select']['future_q'])

@@ -155,7 +155,7 @@ def main():
     p.add_argument('--data',required=True);p.add_argument('--exposure',required=True)
     p.add_argument('--artifacts',required=True);p.add_argument('--out',required=True)
     a=p.parse_args();out,_,host=checked_output(a.out)
-    if host!='teacher':raise ValueError('r1.4 assigns all model smoke to teacherbox')
+    if host!='configured-compute':raise ValueError('model smoke requires the public checkout compute role')
     out.mkdir(parents=True,exist_ok=False)
     if not torch.cuda.is_available():raise RuntimeError('smoke requires target GPU')
     device=torch.device('cuda:0'); bank=Bank(a.data)

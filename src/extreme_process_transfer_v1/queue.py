@@ -30,7 +30,7 @@ def main():
     _,expected,host = checked_output(out/'tmp/queue_path_check')
     if out != expected:
         raise ValueError('unexpected project run root')
-    if host!='teacher' or args.gpu!=0:raise ValueError('r1.4 requires teacherbox GPU0')
+    if host!='configured-compute' or args.gpu!=0:raise ValueError('this retained pilot requires the public checkout compute role and GPU0')
     requested=args.requested_groups.split(',')
     if not requested or len(set(requested))!=len(requested) or any(g not in GROUPS for g in requested):
         raise ValueError('requested groups must be distinct approved IDs')

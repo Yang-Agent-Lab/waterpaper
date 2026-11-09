@@ -5,7 +5,7 @@
   "supplement_source_commit": "cffc1b13be29cd2bcab26d666f7c20100a90668b",
   "scope": "Local retained source commits; current remote-only changes were not inspected.",
   "history": "Fresh public history; private research history is not included.",
-  "transform": "Machine paths normalized; two private-infrastructure paragraphs omitted; two path-containment adapters use this public checkout root. See per-file public_adaptation. Scientific formulas, data identities and experiment budgets were not intentionally changed.",
+  "transform": "Machine paths normalized; two private-infrastructure paragraphs omitted; path-containment adapters use this public checkout root and consistent public compute-role checks. See per-file public_adaptation. Scientific formulas, data identities and experiment budgets were not intentionally changed.",
   "excludes": [
     "data arrays",
     "weights",
@@ -224,6 +224,30 @@
       "path_normalized": true,
       "public_adaptation": "Private infrastructure paragraphs omitted from public copy.",
       "export_modified": true
+    },
+    {
+      "path": "configs/data_registry_acl_v1.sql",
+      "source_commit": "f8bf638229dcd9206c835c895c8e90b3305c0e70",
+      "source_sha256": "fd58bd76b92cc1a15a6533c680a64c37f0338887ccb4a354155f49870aff396c",
+      "exported_sha256": "fd58bd76b92cc1a15a6533c680a64c37f0338887ccb4a354155f49870aff396c",
+      "path_normalized": false,
+      "export_modified": false
+    },
+    {
+      "path": "configs/data_registry_queries_v1.sql",
+      "source_commit": "f8bf638229dcd9206c835c895c8e90b3305c0e70",
+      "source_sha256": "a76932050e961b9cfecd90b9bf28876bce35c4e52cdaee81d809e6ef1d49f2cb",
+      "exported_sha256": "a76932050e961b9cfecd90b9bf28876bce35c4e52cdaee81d809e6ef1d49f2cb",
+      "path_normalized": false,
+      "export_modified": false
+    },
+    {
+      "path": "configs/data_registry_schema_v1.sql",
+      "source_commit": "f8bf638229dcd9206c835c895c8e90b3305c0e70",
+      "source_sha256": "39bcd5cf60f329aaa44723ed38f985cec69aa201cfba95096b31a8c7906868b3",
+      "exported_sha256": "39bcd5cf60f329aaa44723ed38f985cec69aa201cfba95096b31a8c7906868b3",
+      "path_normalized": false,
+      "export_modified": false
     },
     {
       "path": "configs/esdf_flood_first_run_v1.json",
@@ -1492,6 +1516,14 @@
       "export_modified": true
     },
     {
+      "path": "src/data_organization_v1/launch_utf8.sh",
+      "source_commit": "f8bf638229dcd9206c835c895c8e90b3305c0e70",
+      "source_sha256": "65d07f42338540b0cba68a0532568bdf0fe54d5ebcf42ed62e5dde20487444e4",
+      "exported_sha256": "2ee2c4620f3aad271d83d5876560a6dfb355934d37941a3a1b89b8159176c2ab",
+      "path_normalized": true,
+      "export_modified": true
+    },
+    {
       "path": "src/data_organization_v1/plot.py",
       "source_commit": "f8bf638229dcd9206c835c895c8e90b3305c0e70",
       "source_sha256": "a1a67599ec878f65dbf63bc9bf7b072395717e118f84554336345fe1644f04bd",
@@ -1568,6 +1600,14 @@
       "source_commit": "f8bf638229dcd9206c835c895c8e90b3305c0e70",
       "source_sha256": "292dfcc998a220a9306d6862b438a3b403e03ea28039b82278ddfde959bb35be",
       "exported_sha256": "292dfcc998a220a9306d6862b438a3b403e03ea28039b82278ddfde959bb35be",
+      "path_normalized": false,
+      "export_modified": false
+    },
+    {
+      "path": "src/data_registry_sql_export_v1.py",
+      "source_commit": "f8bf638229dcd9206c835c895c8e90b3305c0e70",
+      "source_sha256": "90d3aa345a753e9d94dbe5562fc77314a4bcaf3d218b9a02a899653c29f7334a",
+      "exported_sha256": "90d3aa345a753e9d94dbe5562fc77314a4bcaf3d218b9a02a899653c29f7334a",
       "path_normalized": false,
       "export_modified": false
     },
@@ -1880,17 +1920,19 @@
       "path": "src/extreme_process_transfer_v1/queue.py",
       "source_commit": "f8bf638229dcd9206c835c895c8e90b3305c0e70",
       "source_sha256": "763225c29c298ef00845710f399eb3943723ae4a46761bb9593086068cb8d53f",
-      "exported_sha256": "763225c29c298ef00845710f399eb3943723ae4a46761bb9593086068cb8d53f",
+      "exported_sha256": "c1c071ceedf7e8b620cb29a408ce8cf03277920bf14852265429ca16f673a333",
       "path_normalized": false,
-      "export_modified": false
+      "export_modified": true,
+      "public_adaptation": "Accept the public compute-role marker; retain the original GPU0 constraint."
     },
     {
       "path": "src/extreme_process_transfer_v1/reference.py",
       "source_commit": "f8bf638229dcd9206c835c895c8e90b3305c0e70",
       "source_sha256": "9ba55e511b0bc54994eff48af31a51fa26cc4727e9d3cbf36c2220e8942762dd",
-      "exported_sha256": "9ba55e511b0bc54994eff48af31a51fa26cc4727e9d3cbf36c2220e8942762dd",
+      "exported_sha256": "f10aef6e57703a7013fb00d8397732b711df9c5d5448e0742e7d1cec418b9547",
       "path_normalized": false,
-      "export_modified": false
+      "export_modified": true,
+      "public_adaptation": "Accept the public compute-role marker returned by the checkout path adapter."
     },
     {
       "path": "src/extreme_process_transfer_v1/report.py",
@@ -1904,9 +1946,10 @@
       "path": "src/extreme_process_transfer_v1/smoke.py",
       "source_commit": "f8bf638229dcd9206c835c895c8e90b3305c0e70",
       "source_sha256": "79bd319b3e742e43334e6999bd6a139f85992d9e08a54eb6264943c89df316e3",
-      "exported_sha256": "79bd319b3e742e43334e6999bd6a139f85992d9e08a54eb6264943c89df316e3",
+      "exported_sha256": "cdc75c11b2add3cfb07b12d645e2cdd4f69ed866193176ad8bf17e1669c7195d",
       "path_normalized": false,
-      "export_modified": false
+      "export_modified": true,
+      "public_adaptation": "Accept the public compute-role marker returned by the checkout path adapter."
     },
     {
       "path": "src/extreme_process_transfer_v1/watch.py",
@@ -1920,9 +1963,10 @@
       "path": "src/extreme_process_transfer_v1/worker.py",
       "source_commit": "f8bf638229dcd9206c835c895c8e90b3305c0e70",
       "source_sha256": "50ba3b202f3ac0d8b87a24d69acda01412ac062d1a949a926fc354efd2e187b4",
-      "exported_sha256": "50ba3b202f3ac0d8b87a24d69acda01412ac062d1a949a926fc354efd2e187b4",
+      "exported_sha256": "b01330b1677aae13f28804b49bd5b1c2b89ad3447068ac33be8412bc6c826e90",
       "path_normalized": false,
-      "export_modified": false
+      "export_modified": true,
+      "public_adaptation": "Accept the public compute-role marker returned by the checkout path adapter."
     },
     {
       "path": "src/fit_rank_template_v1/core.py",

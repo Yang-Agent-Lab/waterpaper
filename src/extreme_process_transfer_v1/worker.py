@@ -125,7 +125,7 @@ def run(group, bank, schedules, ratio, artifacts, device, folder, steps=None,
         candidate_updates=None, evaluation_draws=32, resume=None, interrupt_after=None):
     """Run one configuration; supplied shortened steps are engineering-only."""
     folder, _, host = checked_output(folder)
-    if host!='teacher':raise ValueError('r1.4 assigns all model execution to teacherbox')
+    if host!='configured-compute':raise ValueError('model execution requires the public checkout compute role')
     if resume is None:
         if folder.exists():
             raise FileExistsError('preserve prior worker output')
